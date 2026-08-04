@@ -1,0 +1,40 @@
+# ─── SECRETS — never commit ────────────────────────────────────────────────
+.env
+.env.local
+cookies.txt
+token.txt
+
+# ─── Chiron's own source repos ──────────────────────────────────────────────
+# These are NOT part of this repo (they belong to the Chiron project) but the
+# docker-compose stack builds from them. Place/clone them here as siblings —
+# see README.md "Layout".
+is4r-chiron-develop/
+is4r-chiron-ui-develop/
+
+# ─── Environments & build output ────────────────────────────────────────────
+.venv/
+venv/
+node_modules/
+dist/
+build/
+*.egg-info/
+
+# ─── Python caches ─────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ─── Local databases & logs (regenerated at runtime) ───────────────────────
+*.db
+*.sqlite3
+logs/
+chiron-dashboard/data/logs/
+
+# ─── OS / editor ───────────────────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,31 @@
+# This file trims the build context for the DASHBOARD image only (the one build
+# whose context is the repo root). The backend/UI builds use their own contexts.
+#
+# Keep out the heavy + host-specific things. The backend + UI source trees are
+# bind-mounted read-only at runtime, so they don't belong in this context either.
+is4r-chiron-develop/
+is4r-chiron-ui-develop/
+
+# Host virtualenvs (recreated inside the image) and language caches.
+**/.venv/
+**/venv/
+**/node_modules/
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/.ruff_cache/
+**/*.egg-info/
+
+# VCS, build output, editor/OS cruft, scratch.
+**/.git/
+**/dist/
+**/build/
+**/.DS_Store
+temp/
+deploy/
+
+# Top-level write-ups aren't needed in the image (docs live in the repo).
+*.md
+
+# Dashboard runtime logs (the dir itself is recreated in the Dockerfile).
+chiron-dashboard/data/logs/

@@ -1,0 +1,288 @@
+{
+  "_comment": "Hand-written, high-precision response contracts for the key v2 endpoints the runner exercises. Field lists come from Chiron's DRF serializers (chiron/api_v2/serializers/*, chiron/api/serializers.py); several were confirmed against live responses during Task 2. These override the auto-derived contracts from inventory.json for the matching endpoint key. See chiron_validator/typecheck.py for the type language.",
+  "endpoints": [
+    {
+      "key": "v2|GET|/api/v2/dataset/|list",
+      "purpose": "List datasets the current user can access.",
+      "response_contract": {
+        "kind": "object",
+        "strict_extra": true,
+        "fields": [
+          {"name": "datasets", "type": "array", "required": true, "nullable": false,
+           "strict_extra": true,
+           "item_fields": [
+             {"name": "id", "type": "integer", "required": true, "nullable": false},
+             {"name": "name", "type": "string", "required": true, "nullable": false},
+             {"name": "unique_id", "type": "string", "required": true, "nullable": false},
+             {"name": "description", "type": "string", "required": true, "nullable": true},
+             {"name": "siteTitle", "type": "string", "required": true, "nullable": true},
+             {"name": "selectable", "type": "boolean", "required": true, "nullable": false},
+             {"name": "contactEmail", "type": "string", "required": true, "nullable": true}
+           ]}
+        ]
+      }
+    },
+    {
+      "key": "v2|GET|/api/v2/auth/|list",
+      "purpose": "Return the authenticated user's identity + Chiron version.",
+      "response_contract": {
+        "kind": "object",
+        "strict_extra": true,
+        "fields": [
+          {"name": "user", "type": "object", "required": true, "nullable": true,
+           "object_fields": [
+             {"name": "id", "type": "integer", "required": true, "nullable": false},
+             {"name": "username", "type": "string", "required": true, "nullable": false},
+             {"name": "isStaff", "type": "boolean", "required": true, "nullable": false},
+             {"name": "name", "type": "string", "required": true, "nullable": true},
+             {"name": "email", "type": "string", "required": true, "nullable": true}
+           ]},
+          {"name": "chironVersion", "type": "string", "required": true, "nullable": false}
+        ]
+      }
+    },
+    {
+      "key": "v2|GET|/api/v2/{dataset_string}/concept_categories/|list",
+      "purpose": "Return the concept-category tree for a dataset.",
+      "response_contract": {
+        "kind": "object",
+        "strict_extra": true,
+        "fields": [
+          {"name": "category_id", "type": "string", "required": true, "nullable": false},
+          {"name": "categories", "type": "array", "required": true, "nullable": false,
+           "strict_extra": false,
+           "item_fields": [
+             {"name": "id", "type": "integer", "required": true, "nullable": false},
+             {"name": "name", "type": "string", "required": true, "nullable": false},
+             {"name": "parent_id", "type": "integer", "required": true, "nullable": true},
+             {"name": "get_level", "type": "integer", "required": true, "nullable": false}
+           ]}
+        ]
+      }
+    },
+    {
+      "key": "v2|GET|/api/v2/{dataset_string}/collections/|list",
+      "purpose": "Bare array of collections for a dataset (CollectionSerializer, v2 non-paginated).",
+      "response_contract": {
+        "kind": "array",
+        "strict_extra": true,
+        "fields": [
+          {"name": "permanent_id", "type": "string", "required": true, "nullable": false},
+          {"name": "name", "type": "string", "required": true, "nullable": false},
+          {"name": "get_name_plural", "type": "string", "required": true, "nullable": true},
+          {"name": "is_root_collection", "type": "boolean", "required": true, "nullable": false},
+          {"name": "has_event", "type": "boolean", "required": true, "nullable": false}
+        ]
+      }
+    },
+    {
+      "key": "v2|GET|/api/v2/{dataset_string}/reports/|list",
+      "purpose": "Paginated list of the user's viewable reports (UserCreatedContentSerializer).",
+      "response_contract": {
+        "kind": "paginated",
+        "strict_extra": true,
+        "fields": [
+          {"name": "id", "type": "integer", "required": true, "nullable": false},
+          {"name": "name", "type": "string", "required": true, "nullable": false},
+          {"name": "project", "type": "integer", "required": true, "nullable": true},
+          {"name": "project_name", "type": "string", "required": true, "nullable": true},
+          {"name": "description", "type": "string", "required": true, "nullable": true},
+          {"name": "creator", "type": "integer", "required": true, "nullable": true},
+          {"name": "creator_name", "type": "string", "required": true, "nullable": true},
+          {"name": "created", "type": "string:iso8601", "required": true, "nullable": false},
+          {"name": "type", "type": "enum:cohort|table|analysis", "required": true, "nullable": false},
+          {"name": "definition", "type": "string", "required": true, "nullable": true},
+          {"name": "public", "type": "boolean", "required": true, "nullable": false},
+          {"name": "starred", "type": "boolean", "required": true, "nullable": false},
+          {"name": "share_with", "type": "array", "required": true, "nullable": false},
+          {"name": "sharing_description", "type": "string", "required": true, "nullable": true}
+        ]
+      }
+    },
+    {
+      "key": "v2|GET|/api/v2/{dataset_string}/analysis_def/|list",
+      "purpose": "Active analysis-definition for the user (object; empty {} when none active).",
+      "response_contract": {"kind": "object", "strict_extra": false, "fields": []}
+    },
+    {
+      "key": "v2|GET, POST|/api/v2/{dataset_string}/query_tools/preview/|preview",
+      "purpose": "Preview rows for the active cohort/table over the warehouse.",
+      "response_contract": {
+        "kind": "object", "strict_extra": true,
+        "fields": [
+          {"name": "warnings", "type": "array", "required": true, "nullable": false},
+          {"name": "errors", "type": "array", "required": true, "nullable": false},
+          {"name": "record_count", "type": "integer", "required": true, "nullable": false},
+          {"name": "subject_count", "type": "integer", "required": true, "nullable": false},
+          {"name": "paginator", "type": "object", "required": true, "nullable": false,
+           "object_fields": [
+             {"name": "first_index", "type": "integer", "required": true, "nullable": false},
+             {"name": "last_index", "type": "integer", "required": true, "nullable": false},
+             {"name": "current_page", "type": "integer", "required": true, "nullable": false},
+             {"name": "previous_page", "type": "integer", "required": true, "nullable": true},
+             {"name": "next_page", "type": "integer", "required": true, "nullable": true},
+             {"name": "last_page", "type": "integer", "required": true, "nullable": false},
+             {"name": "total_records", "type": "integer", "required": true, "nullable": false}
+           ]},
+          {"name": "extended_table_def", "type": "object", "required": true, "nullable": false,
+           "strict_extra": false,
+           "object_fields": [
+             {"name": "fields", "type": "array", "required": true, "nullable": false},
+             {"name": "table_type", "type": "string", "required": true, "nullable": false},
+             {"name": "sort", "type": "array", "required": true, "nullable": false}
+           ]},
+          {"name": "data", "type": "array", "required": true, "nullable": false}
+        ]
+      }
+    },
+    {
+      "key": "v2|GET, POST|/api/v2/{dataset_string}/query_tools/preview_metadata/|preview_metadata",
+      "purpose": "Preview metadata (column definitions) without data rows.",
+      "response_contract": {
+        "kind": "object", "strict_extra": true,
+        "fields": [
+          {"name": "warnings", "type": "array", "required": true, "nullable": false},
+          {"name": "errors", "type": "array", "required": true, "nullable": false},
+          {"name": "extended_table_def", "type": "object", "required": true, "nullable": false,
+           "strict_extra": false,
+           "object_fields": [
+             {"name": "fields", "type": "array", "required": true, "nullable": false},
+             {"name": "table_type", "type": "string", "required": true, "nullable": false},
+             {"name": "sort", "type": "array", "required": true, "nullable": false}
+           ]},
+          {"name": "pipeline", "type": "string", "required": true, "nullable": false}
+        ]
+      }
+    },
+    {
+      "key": "v2|GET|/api/v2/{dataset_string}/report_tools/{pk}/preview/|preview",
+      "purpose": "Preview rows for a saved report (same envelope as query_tools/preview).",
+      "response_contract": {
+        "kind": "object", "strict_extra": true,
+        "fields": [
+          {"name": "warnings", "type": "array", "required": true, "nullable": false},
+          {"name": "errors", "type": "array", "required": true, "nullable": false},
+          {"name": "record_count", "type": "integer", "required": true, "nullable": false},
+          {"name": "subject_count", "type": "integer", "required": true, "nullable": false},
+          {"name": "paginator", "type": "object", "required": true, "nullable": false, "strict_extra": false},
+          {"name": "extended_table_def", "type": "object", "required": true, "nullable": false, "strict_extra": false},
+          {"name": "data", "type": "array", "required": true, "nullable": false}
+        ]
+      }
+    },
+    {
+      "key": "v2|GET|/api/v2/{dataset_string}/concepts/{permanent_id}/cohort_def_callback_streaming/|cohort_def_callback_streaming",
+      "purpose": "Streaming variant of cohort_def_callback — emits a chunked/streamed body, not a single JSON object.",
+      "response_contract": {"kind": "raw", "fields": []}
+    },
+    {
+      "key": "v1|GET|/api/concepts/{permanent_id}/cohort_def_callback_streaming/|cohort_def_callback_streaming",
+      "purpose": "v1 streaming callback — chunked body, not a single JSON object.",
+      "response_contract": {"kind": "raw", "fields": []}
+    },
+    {
+      "key": "v1|GET|/api/collections/|list",
+      "purpose": "v1 bare array of collections (mirrors v2).",
+      "response_contract": {
+        "kind": "array", "strict_extra": false,
+        "fields": [
+          {"name": "permanent_id", "type": "string", "required": true, "nullable": false},
+          {"name": "name", "type": "string", "required": true, "nullable": false},
+          {"name": "is_root_collection", "type": "boolean", "required": true, "nullable": false},
+          {"name": "has_event", "type": "boolean", "required": true, "nullable": false}
+        ]
+      }
+    },
+    {
+      "key": "v1|GET|/api/chiron_users/|list",
+      "purpose": "v1 bare array of ChironUsers (ChironUserSerializer).",
+      "response_contract": {
+        "kind": "array", "strict_extra": true,
+        "fields": [
+          {"name": "id", "type": "integer", "required": true, "nullable": false},
+          {"name": "user", "type": "object", "required": true, "nullable": false,
+           "strict_extra": false,
+           "object_fields": [
+             {"name": "id", "type": "integer", "required": true, "nullable": false},
+             {"name": "username", "type": "string", "required": true, "nullable": false},
+             {"name": "email", "type": "string", "required": true, "nullable": true}
+           ]},
+          {"name": "access_level", "type": "string", "required": true, "nullable": false},
+          {"name": "permission_groups", "type": "array", "required": true, "nullable": false}
+        ]
+      }
+    },
+    {
+      "key": "v1|GET, POST|/api/query_tools/preview/|preview",
+      "purpose": "v1 preview (same envelope as v2).",
+      "response_contract": {
+        "kind": "object", "strict_extra": true,
+        "fields": [
+          {"name": "warnings", "type": "array", "required": true, "nullable": false},
+          {"name": "errors", "type": "array", "required": true, "nullable": false},
+          {"name": "record_count", "type": "integer", "required": true, "nullable": false},
+          {"name": "subject_count", "type": "integer", "required": true, "nullable": false},
+          {"name": "paginator", "type": "object", "required": true, "nullable": false, "strict_extra": false},
+          {"name": "extended_table_def", "type": "object", "required": true, "nullable": false, "strict_extra": false},
+          {"name": "data", "type": "array", "required": true, "nullable": false}
+        ]
+      }
+    },
+    {
+      "key": "v1|GET, POST|/api/query_tools/preview_metadata/|preview_metadata",
+      "purpose": "v1 preview metadata (same envelope as v2).",
+      "response_contract": {
+        "kind": "object", "strict_extra": true,
+        "fields": [
+          {"name": "warnings", "type": "array", "required": true, "nullable": false},
+          {"name": "errors", "type": "array", "required": true, "nullable": false},
+          {"name": "extended_table_def", "type": "object", "required": true, "nullable": false, "strict_extra": false},
+          {"name": "pipeline", "type": "string", "required": true, "nullable": false}
+        ]
+      }
+    },
+    {
+      "key": "v1|GET|/api/report_tools/{pk}/preview/|preview",
+      "purpose": "v1 report preview (same envelope as v2).",
+      "response_contract": {
+        "kind": "object", "strict_extra": true,
+        "fields": [
+          {"name": "warnings", "type": "array", "required": true, "nullable": false},
+          {"name": "errors", "type": "array", "required": true, "nullable": false},
+          {"name": "record_count", "type": "integer", "required": true, "nullable": false},
+          {"name": "subject_count", "type": "integer", "required": true, "nullable": false},
+          {"name": "paginator", "type": "object", "required": true, "nullable": false, "strict_extra": false},
+          {"name": "extended_table_def", "type": "object", "required": true, "nullable": false, "strict_extra": false},
+          {"name": "data", "type": "array", "required": true, "nullable": false}
+        ]
+      }
+    },
+    {
+      "key": "v2|GET|/api/v2/{dataset_string}/concepts/|list",
+      "purpose": "Paginated list of concepts (ConceptSerializer v2).",
+      "response_contract": {
+        "kind": "paginated",
+        "strict_extra": false,
+        "fields": [
+          {"name": "permanent_id", "type": "string", "required": true, "nullable": false},
+          {"name": "concept_type", "type": "string", "required": true, "nullable": false},
+          {"name": "name", "type": "string", "required": true, "nullable": false},
+          {"name": "get_name_plural", "type": "string", "required": true, "nullable": true},
+          {"name": "description", "type": "string", "required": true, "nullable": true},
+          {"name": "collection", "type": "string", "required": true, "nullable": false},
+          {"name": "collection_name", "type": "string", "required": true, "nullable": false},
+          {"name": "order", "type": "number", "required": true, "nullable": false},
+          {"name": "published", "type": "boolean", "required": true, "nullable": false},
+          {"name": "include_in_cohort_def", "type": "boolean", "required": true, "nullable": false},
+          {"name": "include_in_table_def", "type": "boolean", "required": true, "nullable": false},
+          {"name": "include_in_analysis_def", "type": "boolean", "required": true, "nullable": false},
+          {"name": "has_phi", "type": "boolean", "required": true, "nullable": false},
+          {"name": "pk", "type": "integer", "required": true, "nullable": false},
+          {"name": "source", "type": "integer", "required": false, "nullable": true},
+          {"name": "prefilter_mode", "type": "string", "required": false, "nullable": true},
+          {"name": "category_hierarchy", "type": "array", "required": false, "nullable": true}
+        ]
+      }
+    }
+  ]
+}

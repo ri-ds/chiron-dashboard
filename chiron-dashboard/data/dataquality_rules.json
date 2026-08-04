@@ -1,0 +1,14 @@
+{
+  "missing_rate_enabled": true,
+  "missing_threshold": 0.3,
+  "numeric_outlier_enabled": true,
+  "isolation_ratio": 0.1,
+  "skew_ratio": 0.8,
+  "label_consistency_enabled": true,
+  "flag_singletons": true,
+  "type_plausibility_enabled": true,
+  "category_abs_threshold": 50,
+  "category_pct_threshold": 0.2,
+  "category_pct_min_subjects": 20,
+  "category_singleton_fraction": 0.5
+}

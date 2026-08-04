@@ -1,0 +1,9 @@
+# Secrets — never commit a live session/token
+.env
+cookies.txt
+token.txt
+
+# Local env
+.venv/
+__pycache__/
+*.pyc

@@ -1,0 +1,115 @@
+# Chiron — full stack in one command:
+#
+#     docker compose up --build
+#
+# Front door: the control dashboard at  http://localhost:8787
+# Also exposed: Chiron UI :3000 · API :8000 · Postgres :5433 (host) -> 5432 (container)
+#
+# IMPORTANT — no data is seeded. The Postgres warehouse starts EMPTY; loading
+# data is a separate step you own (Postgres is published on localhost:5433 for
+# exactly that). Login and project structure come from the backend image's baked
+# SQLite metadata snapshot, so you can sign in, but concept-level queries stay
+# empty until the warehouse is loaded.
+name: chiron
+
+services:
+  # ---- Postgres warehouse (empty; not seeded) ------------------------------
+  db:
+    image: postgres:16
+    container_name: chiron-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: chiron
+    volumes:
+      - chiron-pgdata:/var/lib/postgresql/data
+    ports:
+      # Host 5433 -> container 5432 (host 5432 is often a local Postgres already).
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d chiron"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  # ---- Chiron backend (Django + DRF) ---------------------------------------
+  api:
+    build:
+      context: ./is4r-chiron-develop
+      dockerfile: ../deploy/backend.Dockerfile
+    container_name: chiron-api
+    environment:
+      CHIRON_IN_DOCKER: "1"
+      # Uses your EXISTING host Postgres (already has dataset1/2/3), reached via the
+      # Docker Desktop host gateway. To run fully self-contained on the container's
+      # own Postgres instead, change `host.docker.internal` back to `db`.
+      CHIRON_SQL_ALCHEMY_CONNECTION_STRING: "postgresql://postgres:postgres@host.docker.internal:5432/chiron"
+      CSRF_TRUSTED_ORIGINS: "http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000,http://api:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      # Chiron's own repo gitignores settings_custom.py, so the container DB/host
+      # wiring is shipped here and mounted in. Without this a fresh clone falls back
+      # to localhost:5432 *inside* the container and every warehouse query 500s.
+      - ./deploy/settings_custom.docker.py:/app/test_project/project/settings_custom.py:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('localhost', 8000), 3).close()"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 40s
+    restart: unless-stopped
+
+  # ---- Chiron UI (React build served by nginx) -----------------------------
+  ui:
+    build:
+      context: ./is4r-chiron-ui-develop
+      dockerfile: Dockerfile
+      args:
+        VITE_MUI_KEY: "${VITE_MUI_KEY:-}"
+    container_name: chiron-ui
+    volumes:
+      # Our proxy config (backend paths -> the `api` service). Read-only.
+      - ./deploy/nginx.ui.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - api
+    ports:
+      - "3000:8000"
+    restart: unless-stopped
+
+  # ---- Control dashboard (front door) + the tools --------------------------
+  dashboard:
+    build:
+      context: .
+      dockerfile: deploy/dashboard.Dockerfile
+    container_name: chiron-dashboard
+    environment:
+      CHIRON_DASHBOARD_DOCKER: "1"          # -> control containers, not subprocesses
+      CHIRON_BASE_URL: "http://api:8000"    # tools target the api service
+      CHIRON_USER: "admin"
+      CHIRON_PASSWORD: "demo1234"
+      CHIRON_DATASET: "dataset1_stored"
+    volumes:
+      # Control the sibling containers (Start/Stop/Restart/logs) via the socket.
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Live backend + UI source for the validator/scanners (read-only).
+      - ./is4r-chiron-develop:/app/is4r-chiron-develop:ro
+      - ./is4r-chiron-ui-develop:/app/is4r-chiron-ui-develop:ro
+      # Persist dashboard results/logs across restarts.
+      - chiron-dashboard-data:/app/chiron-dashboard/data
+    depends_on:
+      - api
+      - ui
+    ports:
+      - "8787:8787"
+    restart: unless-stopped
+
+volumes:
+  chiron-pgdata:
+  chiron-dashboard-data:

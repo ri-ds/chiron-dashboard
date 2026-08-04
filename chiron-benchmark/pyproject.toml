@@ -1,0 +1,16 @@
+[project]
+name = "chiron-benchmark"
+version = "0.1.0"
+description = "Repeatable API + UI-flow performance benchmarking for Chiron, driven by synthetic clinical data, evaluated against pass/fail controls."
+requires-python = ">=3.10"
+dependencies = ["requests>=2.26,<3"]
+
+[project.scripts]
+chiron-bench = "bench.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["bench"]

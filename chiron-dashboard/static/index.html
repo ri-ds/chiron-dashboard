@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chiron Dashboard</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="icon" type="image/png" href="/static/favicon.png">
+</head>
+<body>
+  <header class="appbar">
+    <div class="appbar-inner">
+      <h1>Chiron Dashboard</h1>
+      <span class="env-pill" title="Development / demo stack — runs locally only. Not hardened for production (DEBUG on, demo credentials).">local · dev only</span>
+    </div>
+    <nav class="tabs" id="tabs"></nav>
+  </header>
+
+  <main id="panels"></main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+# Chiron quality gate — runs the API type-validator + performance benchmark
+# against a freshly-stood-up Chiron on every PR. Drop into
+# is4r-chiron/.github/workflows/. Black-box: both tools hit the public API only.
+name: chiron-quality
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-and-benchmark:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: chiron
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready --health-interval 10s
+          --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # --- stand up Chiron (backend) with the demo/synthetic dataset ---
+      - name: Install Chiron
+        working-directory: is4r-chiron-develop
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install -r requirements/dev.txt
+
+      - name: Seed synthetic data + start server
+        working-directory: is4r-chiron-develop/test_project
+        env:
+          CHIRON_SQL_ALCHEMY_CONNECTION_STRING: postgresql://postgres:postgres@localhost:5432/chiron
+        run: |
+          ../.venv/bin/python manage.py migrate --noinput
+          ../.venv/bin/python manage.py restore_test_project_state
+          # deterministic dev password for the CI user (local only)
+          ../.venv/bin/python manage.py shell -c "from django.contrib.auth import get_user_model as U; u=U().objects.get(username='admin'); u.set_password('demo1234'); u.save()"
+          ../.venv/bin/python manage.py runserver 127.0.0.1:8000 --noreload &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:8000/api/version/ && break || sleep 2; done
+
+      # --- correctness gate ---
+      - name: API type-validation
+        working-directory: chiron-validator
+        env:
+          CHIRON_BASE_URL: http://127.0.0.1:8000
+          CHIRON_USER: admin
+          CHIRON_PASSWORD: demo1234
+          CHIRON_DATASET: dataset1_stored
+        run: |
+          python -m venv .venv && .venv/bin/pip install -e .
+          .venv/bin/chiron-validator load
+          .venv/bin/chiron-validator run --include-v1 --fail-on-error
+
+      # --- performance gate ---
+      - name: Performance benchmark
+        working-directory: chiron-benchmark
+        env:
+          CHIRON_BASE_URL: http://127.0.0.1:8000
+          CHIRON_USER: admin
+          CHIRON_PASSWORD: demo1234
+        run: |
+          python -m venv .venv && .venv/bin/pip install -e .
+          .venv/bin/chiron-bench --fail-on-miss
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chiron-quality-reports
+          path: |
+            VALIDATOR_REPORT.md
+            chiron-benchmark/PERFORMANCE_REPORT.md
+            chiron-benchmark/results/latest.json

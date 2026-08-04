@@ -1,0 +1,453 @@
+{
+  "tool": "ineffscan",
+  "generated": "2026-07-21T17:48:26+00:00",
+  "summary": {
+    "medium": 31,
+    "low": 18
+  },
+  "n_findings": 49,
+  "meta": {},
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/api/utils/table_def.py:56",
+      "detail": "concept_to_add = models.Concept.objects.get(permanent_id=concept_id)",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/api/viewsets/report_tools.py:90",
+      "detail": "content=user_content, chironuser=models.ChironUser.objects.get(id=chiron_user_id)",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/api/viewsets/report_tools.py:98",
+      "detail": "chiron_user = ChironUser.objects.get(pk=chiron_user_id)",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/api_v2/viewsets/datasets.py:25",
+      "detail": "oChironUser = models.ChironUser.objects.filter(user=request.user, dataset=d).first()",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/api_v2/viewsets/report_tools.py:91",
+      "detail": "content=user_content, chironuser=models.ChironUser.objects.get(id=chiron_user_id)",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/api_v2/viewsets/report_tools.py:99",
+      "detail": "chiron_user = models.ChironUser.objects.get(pk=chiron_user_id)",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/cache/cache_utils.py:169",
+      "detail": "for share_user in saved_cohort.share_with.all():",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/cache/cache_utils.py:74",
+      "detail": "qChironUser = models.ChironUser.objects.filter(dataset=oDataset)",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/processors/registration.py:270",
+      "detail": "qSource = models.Source.objects.filter(processor=oProcessor)",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/processors/registration.py:280",
+      "detail": "oProc = models.Processor.objects.filter(name=entry[\"name\"]).first()",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/processors/registration.py:297",
+      "detail": "qConcept = models.Concept.objects.filter(concept_handler=oHandler)",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/processors/registration.py:307",
+      "detail": "oHandler = models.ConceptHandler.objects.filter(name=entry[\"name\"]).first()",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/processors/registration.py:316",
+      "detail": "oProcessor = models.Processor.objects.get(name=pair[0])",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_definition/analysis_def_functions.py:42",
+      "detail": "oConcept = Concept.objects.filter(permanent_id=entry[\"concept_id\"]).first()",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_definition/analysis_def_functions.py:42",
+      "detail": "oConcept = Concept.objects.filter(permanent_id=entry[\"concept_id\"]).first()",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_definition/analysis_def_functions.py:80",
+      "detail": "oConcept = Concept.objects.get(permanent_id=concept_id)",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_definition/cohort.py:33",
+      "detail": "oCollection = Collection.objects.filter(",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_definition/cohort_def_functions.py:299",
+      "detail": "oCollection = models.Collection.objects.get(",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_definition/cohort_def_functions.py:488",
+      "detail": "oCollection = models.Collection.objects.get(",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_definition/cohort_def_functions.py:502",
+      "detail": "oConcept = models.Concept.objects.get(permanent_id=subentry[\"concept_id\"])",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_definition/cohort_def_functions.py:502",
+      "detail": "oConcept = models.Concept.objects.get(permanent_id=subentry[\"concept_id\"])",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_definition/event_options/relative_to_other_event.py:120",
+      "detail": "oCollectionOther = models.Collection.objects.get(",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_definition/table.py:40",
+      "detail": "oConcept = Concept.objects.filter(permanent_id=td_entry[\"concept_id\"]).first()",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_engine/postgres/sql_alchemy_queries/query_info.py:162",
+      "detail": "oCollection = models.Collection.objects.get(",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_engine/postgres/sql_alchemy_queries/query_info.py:220",
+      "detail": "oCollection = models.Collection.objects.get(",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/query_engine/postgres/sql_alchemy_queries/sections/where_builder.py:63",
+      "detail": "oConcept = Concept.objects.get(permanent_id=concept_id)",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "n+1-query",
+      "title": "Django ORM read inside a loop (possible N+1)",
+      "location": "is4r-chiron-develop/chiron/views/views.py:96",
+      "detail": "oChironUser = models.ChironUser.objects.filter(user=request.user, dataset=oDataset).first()",
+      "fix": "Move the query out of the loop or use select_related/prefetch_related.",
+      "check": "n+1"
+    },
+    {
+      "severity": "medium",
+      "category": "payload",
+      "title": "Large pagination default",
+      "location": "is4r-chiron-develop/chiron/api/utils/pagination.py:11",
+      "detail": "page_size = 1000",
+      "fix": "Lower the default/max page size; large pages mean heavy payloads + slow serialization.",
+      "check": "pagination"
+    },
+    {
+      "severity": "medium",
+      "category": "payload",
+      "title": "Large pagination default",
+      "location": "is4r-chiron-develop/chiron/api/utils/pagination.py:13",
+      "detail": "max_page_size = 10000",
+      "fix": "Lower the default/max page size; large pages mean heavy payloads + slow serialization.",
+      "check": "pagination"
+    },
+    {
+      "severity": "medium",
+      "category": "payload",
+      "title": "Large pagination default",
+      "location": "is4r-chiron-develop/chiron/api/viewsets/concept.py:31",
+      "detail": "max_page_size = 1000",
+      "fix": "Lower the default/max page size; large pages mean heavy payloads + slow serialization.",
+      "check": "pagination"
+    },
+    {
+      "severity": "medium",
+      "category": "payload",
+      "title": "Large pagination default",
+      "location": "is4r-chiron-develop/chiron/api_v2/viewsets/concept.py:30",
+      "detail": "max_page_size = 1000",
+      "fix": "Lower the default/max page size; large pages mean heavy payloads + slow serialization.",
+      "check": "pagination"
+    },
+    {
+      "severity": "low",
+      "category": "bundle",
+      "title": "Full lodash imported (bundle bloat)",
+      "location": "is4r-chiron-ui-develop/src/components/DisplayConceptFilter/FilterComponents/SelectedValuesArea.tsx:9",
+      "detail": "import { truncate } from \"lodash\";",
+      "fix": "Import per-method (lodash/get) or use lodash-es so tree-shaking drops the rest.",
+      "check": "lodash"
+    },
+    {
+      "severity": "low",
+      "category": "bundle",
+      "title": "Full lodash imported (bundle bloat)",
+      "location": "is4r-chiron-ui-develop/src/components/Results/EditColumn/index.tsx:29",
+      "detail": "import _ from \"lodash\";",
+      "fix": "Import per-method (lodash/get) or use lodash-es so tree-shaking drops the rest.",
+      "check": "lodash"
+    },
+    {
+      "severity": "low",
+      "category": "bundle",
+      "title": "Full lodash imported (bundle bloat)",
+      "location": "is4r-chiron-ui-develop/src/store/cohortSlice.ts:7",
+      "detail": "import { isNull } from \"lodash\";",
+      "fix": "Import per-method (lodash/get) or use lodash-es so tree-shaking drops the rest.",
+      "check": "lodash"
+    },
+    {
+      "severity": "low",
+      "category": "bundle",
+      "title": "Full lodash imported (bundle bloat)",
+      "location": "is4r-chiron-ui-develop/src/store/reportsSlice.ts:3",
+      "detail": "// import _ from \"lodash\";",
+      "fix": "Import per-method (lodash/get) or use lodash-es so tree-shaking drops the rest.",
+      "check": "lodash"
+    },
+    {
+      "severity": "low",
+      "category": "bundle",
+      "title": "Full lodash imported (bundle bloat)",
+      "location": "is4r-chiron-ui-develop/src/store/tableSlice.ts:3",
+      "detail": "import _ from \"lodash\";",
+      "fix": "Import per-method (lodash/get) or use lodash-es so tree-shaking drops the rest.",
+      "check": "lodash"
+    },
+    {
+      "severity": "low",
+      "category": "caching",
+      "title": "Concept/stat caching disabled",
+      "location": "is4r-chiron-develop/test_project/project/settings.py:147",
+      "detail": "CHIRON_USE_CACHES = False",
+      "fix": "With caches off, concept stats & cohort counts recompute every request; enable + invalidate.",
+      "check": "caching"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Dead/uninvokable file shipped",
+      "location": "is4r-chiron-develop/chiron/api/tests/DEPRECATED_test_user_created_content.py",
+      "detail": "DEPRECATED_test_user_created_content.py",
+      "fix": "Remove or wire it in; dead code is maintenance drag.",
+      "check": "dead-file"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Commented-out URL route",
+      "location": "is4r-chiron-develop/chiron/api/urls.py:24",
+      "detail": "# router.register(",
+      "fix": "Delete dead route comments; keep routing readable.",
+      "check": "dead-route"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Dead/uninvokable file shipped",
+      "location": "is4r-chiron-develop/chiron/api/viewsets/user_created_content_DEPRECATED.py",
+      "detail": "user_created_content_DEPRECATED.py",
+      "fix": "Remove or wire it in; dead code is maintenance drag.",
+      "check": "dead-file"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Dead/uninvokable file shipped",
+      "location": "is4r-chiron-develop/chiron/management/commands/_chiron_clear_all_concepts.py",
+      "detail": "_chiron_clear_all_concepts.py",
+      "fix": "Remove or wire it in; dead code is maintenance drag.",
+      "check": "dead-file"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Commented-out URL route",
+      "location": "is4r-chiron-develop/chiron/urls.py:100",
+      "detail": "# path(\"single_subject\", views.single_subject, name=\"single_subject\"),",
+      "fix": "Delete dead route comments; keep routing readable.",
+      "check": "dead-route"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Commented-out URL route",
+      "location": "is4r-chiron-develop/chiron/urls.py:29",
+      "detail": "# path(",
+      "fix": "Delete dead route comments; keep routing readable.",
+      "check": "dead-route"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Commented-out URL route",
+      "location": "is4r-chiron-develop/chiron/urls.py:58",
+      "detail": "# path(",
+      "fix": "Delete dead route comments; keep routing readable.",
+      "check": "dead-route"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Commented-out URL route",
+      "location": "is4r-chiron-develop/chiron/urls.py:63",
+      "detail": "# path(",
+      "fix": "Delete dead route comments; keep routing readable.",
+      "check": "dead-route"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Commented-out URL route",
+      "location": "is4r-chiron-develop/chiron/urls.py:68",
+      "detail": "# path(",
+      "fix": "Delete dead route comments; keep routing readable.",
+      "check": "dead-route"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Commented-out URL route",
+      "location": "is4r-chiron-develop/chiron/urls.py:90",
+      "detail": "# path(",
+      "fix": "Delete dead route comments; keep routing readable.",
+      "check": "dead-route"
+    },
+    {
+      "severity": "low",
+      "category": "dead-code",
+      "title": "Commented-out URL route",
+      "location": "is4r-chiron-develop/chiron/urls.py:95",
+      "detail": "# path(",
+      "fix": "Delete dead route comments; keep routing readable.",
+      "check": "dead-route"
+    },
+    {
+      "severity": "low",
+      "category": "duplication",
+      "title": "TimeStampedModel defined 4 times",
+      "location": "is4r-chiron-develop/chiron/models/user_models.py:26, is4r-chiron-develop/chiron/models/cache_models.py:9, is4r-chiron-develop/chiron/models/processor_models.py:9, is4r-chiron-develop/chiron/models/data_definition_models.py:27",
+      "detail": "Identical abstract base duplicated across model files.",
+      "fix": "Define it once in a shared module and import it.",
+      "check": "dup-model"
+    }
+  ]
+}

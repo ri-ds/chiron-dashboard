@@ -1,0 +1,4046 @@
+{
+  "generated_at": "2026-07-21T17:26:08.034106+00:00",
+  "server": "http://127.0.0.1:8000",
+  "missing_threshold": 0.3,
+  "limitation_notice": "LIMITATION: 'high_missingness' below is a SYMPTOM, not a diagnosis. Chiron's ETL layer casts incoming values to their declared type and silently nulls anything that fails that cast, before storage. This API cannot tell genuinely-absent-in-source data apart from malformed-then-silently-nulled data - both look identical as 'missing' here. The record of which is which (ConceptIssueEtlLog) is internal to Chiron and is not exposed by any current API endpoint. See README.md 'Limitations' for detail.",
+  "datasets": [
+    {
+      "dataset": "dataset1_stored",
+      "total_subjects": 6,
+      "concept_count": 69,
+      "issues": [
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "crp_provider_name",
+          "concept_name": "provider name",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"Bill Smith\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "Bill Smith",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "crp_provider_name",
+          "concept_name": "provider name",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"Keiko Hirata\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "Keiko Hirata",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "enc_cost_as_string",
+          "concept_name": "encounter cost as string",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "4 missing value(s) vs 6 subject(s) in the dataset (67%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 4,
+            "total_subjects": 6,
+            "rate": 0.6666666666666666,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_class",
+          "concept_name": "encounter class",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"emergency\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "emergency",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_reason",
+          "concept_name": "reason for visit",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "38 missing value(s) vs 6 subject(s) in the dataset (633%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 38,
+            "total_subjects": 6,
+            "rate": 6.333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 5
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_reason_2",
+          "concept_name": "encounter reason",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "38 missing value(s) vs 6 subject(s) in the dataset (633%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 38,
+            "total_subjects": 6,
+            "rate": 6.333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 5
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_reason_2",
+          "concept_name": "encounter reason",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"Sinusitis (disorder)\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "Sinusitis (disorder)",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_reason_2",
+          "concept_name": "encounter reason",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"Streptococcal sore throat (disorder)\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "Streptococcal sore throat (disorder)",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_stop",
+          "concept_name": "end date",
+          "concept_type": "date",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "3 missing value(s) vs 6 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 3,
+            "total_subjects": 6,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 3
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "payer_coverage",
+          "concept_name": "payer coverage",
+          "concept_type": "number",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "9 missing value(s) vs 6 subject(s) in the dataset (150%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 9,
+            "total_subjects": 6,
+            "rate": 1.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 3
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "payer_coverage_float_with_text",
+          "concept_name": "payer coverage",
+          "concept_type": "number_with_categories",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "4 missing value(s) vs 6 subject(s) in the dataset (67%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 4,
+            "total_subjects": 6,
+            "rate": 0.6666666666666666,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "payer_coverage_float_with_text",
+          "concept_name": "payer coverage",
+          "concept_type": "number_with_categories",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"needs followup\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "needs followup",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "subcol_simple_base_cost",
+          "concept_name": "base encounter cost",
+          "concept_type": "number",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "4 missing value(s) vs 6 subject(s) in the dataset (67%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 4,
+            "total_subjects": 6,
+            "rate": 0.6666666666666666,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "subcol_simple_claim_cost",
+          "concept_name": "total claim cost",
+          "concept_type": "number",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "3 missing value(s) vs 6 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 3,
+            "total_subjects": 6,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "subcol_simple_paid",
+          "concept_name": "paid",
+          "concept_type": "boolean",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "8 missing value(s) vs 6 subject(s) in the dataset (133%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 8,
+            "total_subjects": 6,
+            "rate": 1.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 4
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "test_exclude_from_aggregated",
+          "concept_name": "test access exclude from aggregated",
+          "concept_type": "number",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "4 missing value(s) vs 6 subject(s) in the dataset (67%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 4,
+            "total_subjects": 6,
+            "rate": 0.6666666666666666,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "test_permission_blocked",
+          "concept_name": "test permission blocked concept",
+          "concept_type": "number",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "4 missing value(s) vs 6 subject(s) in the dataset (67%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 4,
+            "total_subjects": 6,
+            "rate": 0.6666666666666666,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_event_date_2",
+          "concept_name": "lab date",
+          "concept_type": "date",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "8 missing value(s) vs 6 subject(s) in the dataset (133%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 8,
+            "total_subjects": 6,
+            "rate": 1.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 3
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "m2m_subcol_concept1",
+          "concept_name": "M2M Subcol concept 1",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"nnn\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "nnn",
+            "count": 1,
+            "unique_patient_count": 3
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "m2m_subcol_concept1",
+          "concept_name": "M2M Subcol concept 1",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"ynn\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "ynn",
+            "count": 1,
+            "unique_patient_count": 3
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "m2m_subcol_concept1",
+          "concept_name": "M2M Subcol concept 1",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"yyn\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "yyn",
+            "count": 1,
+            "unique_patient_count": 3
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "m2m_subcol_concept1",
+          "concept_name": "M2M Subcol concept 1",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"yyy\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "yyy",
+            "count": 1,
+            "unique_patient_count": 3
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "complex_coverage",
+          "concept_name": "health care coverage",
+          "concept_type": "number_with_categories",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "complex_coverage",
+          "concept_name": "health care coverage",
+          "concept_type": "number_with_categories",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"not reported\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "not reported",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "complex_expenses",
+          "concept_name": "health care expenses",
+          "concept_type": "number_with_categories",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "ethnicity",
+          "concept_name": "ethnicity",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"hispanic\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "hispanic",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "gender",
+          "concept_name": "gender",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"F\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "F",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "healthcare_coverage",
+          "concept_name": "healthcare coverage",
+          "concept_type": "number",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "healthcare_coverage_2",
+          "concept_name": "healthcare coverage",
+          "concept_type": "number",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "marital_status",
+          "concept_name": "marital status",
+          "concept_type": "boolean",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "married",
+          "concept_name": "married",
+          "concept_type": "boolean",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "patient_deathdate",
+          "concept_name": "death date",
+          "concept_type": "date",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "6 missing value(s) vs 6 subject(s) in the dataset (100%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 6,
+            "total_subjects": 6,
+            "rate": 1.0,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 6
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "permission_test_race",
+          "concept_name": "root concept",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "permission_test_race",
+          "concept_name": "root concept",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"Asian\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "Asian",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "permission_test_race",
+          "concept_name": "root concept",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"multiracial\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "multiracial",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "race",
+          "concept_name": "race",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "race",
+          "concept_name": "race",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"Asian\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "Asian",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "race",
+          "concept_name": "race",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"multiracial\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "multiracial",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "race_2",
+          "concept_name": "race",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "race_2",
+          "concept_name": "race",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"Asian\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "Asian",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "race_2",
+          "concept_name": "race",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"multiracial\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "multiracial",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        }
+      ],
+      "skipped": [
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_date",
+          "concept_name": "lab date",
+          "reason_kind": "prefiltered",
+          "reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_units",
+          "concept_name": "units as category",
+          "reason_kind": "prefiltered",
+          "reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_value_is_numeric",
+          "concept_name": "is numeric (boolean)",
+          "reason_kind": "prefiltered",
+          "reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_value_num_cat",
+          "concept_name": "value as num with cat",
+          "reason_kind": "prefiltered",
+          "reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_value_number",
+          "concept_name": "value as number",
+          "reason_kind": "prefiltered",
+          "reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_value_string",
+          "concept_name": "value as text",
+          "reason_kind": "prefiltered",
+          "reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "value_strange_sort",
+          "concept_name": "value custom sort",
+          "reason_kind": "prefiltered",
+          "reason": "You must provide a prefilter value."
+        }
+      ],
+      "error": null,
+      "concepts": [
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "cra_aliquot_date",
+          "concept_name": "aliquot date",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "cra_aliquot_id",
+          "concept_name": "aliquot ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "cra_aliquot_number",
+          "concept_name": "aliquot number",
+          "concept_type": "number",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "cra_sample_id",
+          "concept_name": "sample ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "cre_encounter_end",
+          "concept_name": "encounter end date",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "cre_encounter_id",
+          "concept_name": "encounter ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "cre_encounter_start",
+          "concept_name": "encounter start date",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "crp_encounter_id",
+          "concept_name": "provider encounter ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "crp_provider_name",
+          "concept_name": "provider name",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 2,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "crs_encounter_id",
+          "concept_name": "sample encounter ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "crs_sample_date",
+          "concept_name": "sample date",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "crs_sample_id",
+          "concept_name": "sample ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "crs_sample_type",
+          "concept_name": "sample type",
+          "concept_type": "category",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "enc_cost_as_string",
+          "concept_name": "encounter cost as string",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_class",
+          "concept_name": "encounter class",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_id",
+          "concept_name": "encounter ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_reason",
+          "concept_name": "reason for visit",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_reason_2",
+          "concept_name": "encounter reason",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 3,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_start",
+          "concept_name": "start date",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_stop",
+          "concept_name": "end date",
+          "concept_type": "date",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "encounter_type",
+          "concept_name": "encounter type",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "payer_coverage",
+          "concept_name": "payer coverage",
+          "concept_type": "number",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "payer_coverage_float_with_text",
+          "concept_name": "payer coverage",
+          "concept_type": "number_with_categories",
+          "status": "issues",
+          "issue_count": 2,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "phi_subcol_concept",
+          "concept_name": "PHI subcol concept",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "subcol_phi_date",
+          "concept_name": "PHI date with alt",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "subcol_simple_base_cost",
+          "concept_name": "base encounter cost",
+          "concept_type": "number",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "subcol_simple_claim_cost",
+          "concept_name": "total claim cost",
+          "concept_type": "number",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "subcol_simple_enc_class",
+          "concept_name": "encounter class",
+          "concept_type": "category",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "subcol_simple_encounter_date",
+          "concept_name": "encounter_date",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "subcol_simple_encounter_id",
+          "concept_name": "encounter ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "subcol_simple_paid",
+          "concept_name": "paid",
+          "concept_type": "boolean",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "test_exclude_from_aggregated",
+          "concept_name": "test access exclude from aggregated",
+          "concept_type": "number",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "test_permission_blocked",
+          "concept_name": "test permission blocked concept",
+          "concept_type": "number",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "test_permission_subcol",
+          "concept_name": "subcol concept",
+          "concept_type": "category",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_code",
+          "concept_name": "lab code",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_date",
+          "concept_name": "lab date",
+          "concept_type": "date",
+          "status": "skipped",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_description",
+          "concept_name": "measurement name",
+          "concept_type": "category",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_units",
+          "concept_name": "units as category",
+          "concept_type": "category",
+          "status": "skipped",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_value_is_numeric",
+          "concept_name": "is numeric (boolean)",
+          "concept_type": "boolean",
+          "status": "skipped",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_value_num_cat",
+          "concept_name": "value as num with cat",
+          "concept_type": "number_with_categories",
+          "status": "skipped",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_value_number",
+          "concept_name": "value as number",
+          "concept_type": "number",
+          "status": "skipped",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_value_string",
+          "concept_name": "value as text",
+          "concept_type": "text",
+          "status": "skipped",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "value_strange_sort",
+          "concept_name": "value custom sort",
+          "concept_type": "text",
+          "status": "skipped",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": "You must provide a prefilter value."
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_event_artificial_id",
+          "concept_name": "lab ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_event_date_2",
+          "concept_name": "lab date",
+          "concept_type": "date",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "lab_event_name",
+          "concept_name": "lab name",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "m2m_subcol_concept1",
+          "concept_name": "M2M Subcol concept 1",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 4,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "birth_place",
+          "concept_name": "birth place",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "complex_coverage",
+          "concept_name": "health care coverage",
+          "concept_type": "number_with_categories",
+          "status": "issues",
+          "issue_count": 2,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "complex_expenses",
+          "concept_name": "health care expenses",
+          "concept_type": "number_with_categories",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "ethnicity",
+          "concept_name": "ethnicity",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "full_name",
+          "concept_name": "full name",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "gender",
+          "concept_name": "gender",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "healthcare_coverage",
+          "concept_name": "healthcare coverage",
+          "concept_type": "number",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "healthcare_coverage_2",
+          "concept_name": "healthcare coverage",
+          "concept_type": "number",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "healthcare_expenses",
+          "concept_name": "healthcare expenses",
+          "concept_type": "number",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "healthcare_expenses_2",
+          "concept_name": "healthcare expenses",
+          "concept_type": "number",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "marital_status",
+          "concept_name": "marital status",
+          "concept_type": "boolean",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "married",
+          "concept_name": "married",
+          "concept_type": "boolean",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "patient_birthdate",
+          "concept_name": "birthdate",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "patient_deathdate",
+          "concept_name": "death date",
+          "concept_type": "date",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "patient_firstname",
+          "concept_name": "first name",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "patient_id",
+          "concept_name": "patient ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "patient_id_phi",
+          "concept_name": "PHI root concept",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "patient_lastname",
+          "concept_name": "last name",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "permission_test_race",
+          "concept_name": "root concept",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 3,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "race",
+          "concept_name": "race",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 3,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "race_2",
+          "concept_name": "race",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 3,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset1_stored",
+          "concept_id": "study_group_c",
+          "concept_name": "study group C",
+          "concept_type": "boolean",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        }
+      ]
+    },
+    {
+      "dataset": "dataset2_stored",
+      "total_subjects": 6,
+      "concept_count": 49,
+      "issues": [
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "PAYER_COVERAGE_ojszwvogpr",
+          "concept_name": "PAYER_COVERAGE",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "4 missing value(s) vs 6 subject(s) in the dataset (67%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 4,
+            "total_subjects": 6,
+            "rate": 0.6666666666666666,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "REASONCODE_hndcwjansp",
+          "concept_name": "REASONCODE",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "30 missing value(s) vs 6 subject(s) in the dataset (500%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 30,
+            "total_subjects": 6,
+            "rate": 5.0,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 4
+          }
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "REASONDESCRIPTION_pggsyaxfqy",
+          "concept_name": "REASONDESCRIPTION",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "30 missing value(s) vs 6 subject(s) in the dataset (500%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 30,
+            "total_subjects": 6,
+            "rate": 5.0,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 4
+          }
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "DEATHDATE_pwedudwsts",
+          "concept_name": "DEATHDATE",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "5 missing value(s) vs 6 subject(s) in the dataset (83%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 5,
+            "total_subjects": 6,
+            "rate": 0.8333333333333334,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 5
+          }
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "HEALTHCARE_COVERAGE_fpdeykrohb",
+          "concept_name": "HEALTHCARE_COVERAGE",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "MAIDEN_oxgyyvmsqe",
+          "concept_name": "MAIDEN",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "5 missing value(s) vs 6 subject(s) in the dataset (83%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 5,
+            "total_subjects": 6,
+            "rate": 0.8333333333333334,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 5
+          }
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "MARRIED_ajgdgwsrug",
+          "concept_name": "MARRIED",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "PASSPORT_xohxdxoath",
+          "concept_name": "PASSPORT",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "RACE_bazapgxjle",
+          "concept_name": "RACE",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 6 subject(s) in the dataset (33%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 6,
+            "rate": 0.3333333333333333,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "SUFFIX_recbqouzky",
+          "concept_name": "SUFFIX",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "6 missing value(s) vs 6 subject(s) in the dataset (100%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 6,
+            "total_subjects": 6,
+            "rate": 1.0,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 6
+          }
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "d2_current_age",
+          "concept_name": "subject age",
+          "concept_type": "number_with_categories",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"90 and above\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "90 and above",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        }
+      ],
+      "skipped": [],
+      "error": null,
+      "concepts": [
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "BASE_ENCOUNTER_COST_tulvsopbpm",
+          "concept_name": "BASE_ENCOUNTER_COST",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "CODE_lmnmdlqeal",
+          "concept_name": "CODE",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "DESCRIPTION_xjlrropoun",
+          "concept_name": "DESCRIPTION",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "ENCOUNTERCLASS_kqvtiptsrn",
+          "concept_name": "ENCOUNTERCLASS",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "Id_plvufflgxj",
+          "concept_name": "encounter ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "ORGANIZATION_ojtmeutqvq",
+          "concept_name": "ORGANIZATION",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "PASSPORT_tuhmsqtaud",
+          "concept_name": "PASSPORT",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "PATIENT_qyxtzoxyzq",
+          "concept_name": "PATIENT",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "PAYER_COVERAGE_ojszwvogpr",
+          "concept_name": "PAYER_COVERAGE",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "PAYER_yqkvgmgrgj",
+          "concept_name": "PAYER",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "PROVIDER_tiekafhnpw",
+          "concept_name": "PROVIDER",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "REASONCODE_hndcwjansp",
+          "concept_name": "REASONCODE",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "REASONDESCRIPTION_pggsyaxfqy",
+          "concept_name": "REASONDESCRIPTION",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "START_wptpwtchpc",
+          "concept_name": "START",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "STOP_eiwzqemmkp",
+          "concept_name": "STOP",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "TOTAL_CLAIM_COST_jixcudwgmw",
+          "concept_name": "TOTAL_CLAIM_COST",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "autocreated_encounter_id",
+          "concept_name": "autocreated encounter ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "d2_age_at_start",
+          "concept_name": "age at encounter",
+          "concept_type": "age",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "ADDRESS_cicdjinewc",
+          "concept_name": "ADDRESS",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "BIRTHDATE_dvsqsuccxv",
+          "concept_name": "BIRTHDATE",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "BIRTHPLACE_rzaqwitydc",
+          "concept_name": "BIRTHPLACE",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "CITY_hkszmirmae",
+          "concept_name": "CITY",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "COUNTY_vvrbiqojgj",
+          "concept_name": "COUNTY",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "DEATHDATE_pwedudwsts",
+          "concept_name": "DEATHDATE",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "DRIVERS_aeyrznjumm",
+          "concept_name": "DRIVERS",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "ETHNICITY_zbuuivfxab",
+          "concept_name": "ETHNICITY",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "FIRST_bcixakdiiw",
+          "concept_name": "FIRST",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "FYLER",
+          "concept_name": "Fyler",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "GENDER_bbfdtarwhl",
+          "concept_name": "GENDER",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "HEALTHCARE_COVERAGE_fpdeykrohb",
+          "concept_name": "HEALTHCARE_COVERAGE",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "HEALTHCARE_EXPENSES_bnxfavndqk",
+          "concept_name": "HEALTHCARE_EXPENSES",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "Id_ujftofurne",
+          "concept_name": "Id",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "LAST_lvdtyeltvh",
+          "concept_name": "LAST",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "LAT_ectrnrzzmt",
+          "concept_name": "LAT",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "LON_btxdcoecbp",
+          "concept_name": "LON",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "MAIDEN_oxgyyvmsqe",
+          "concept_name": "MAIDEN",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "MARRIED_ajgdgwsrug",
+          "concept_name": "MARRIED",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "PASSPORT_xohxdxoath",
+          "concept_name": "PASSPORT",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "PREFIX_wohgaoakmg",
+          "concept_name": "PREFIX",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "RACE_bazapgxjle",
+          "concept_name": "RACE",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "SSN_vfbikhyoao",
+          "concept_name": "SSN",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "STATE_rowvvwihgl",
+          "concept_name": "STATE",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "STUDY_GROUP_A_mjajgwerhd",
+          "concept_name": "STUDY_GROUP_A",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "STUDY_GROUP_B_rjjaredsac",
+          "concept_name": "STUDY_GROUP_B",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "STUDY_GROUP_C_vpbxtmeumv",
+          "concept_name": "STUDY_GROUP_C",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "SUFFIX_recbqouzky",
+          "concept_name": "SUFFIX",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "ZIP_eghyzmsnwk",
+          "concept_name": "ZIP",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "autocreated_subject_id",
+          "concept_name": "autocreated ID",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset2_stored",
+          "concept_id": "d2_current_age",
+          "concept_name": "subject age",
+          "concept_type": "number_with_categories",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        }
+      ]
+    },
+    {
+      "dataset": "dataset3_stored",
+      "total_subjects": 4,
+      "concept_count": 47,
+      "issues": [
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "file_id_awchsrhuuu",
+          "concept_name": "file_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"1A\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "1A",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "file_id_awchsrhuuu",
+          "concept_name": "file_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"1A, 2B, 3E\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "1A, 2B, 3E",
+            "count": 1,
+            "unique_patient_count": 3
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "file_id_awchsrhuuu",
+          "concept_name": "file_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"2B, 2C, 2D\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "2B, 2C, 2D",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "file_id_awchsrhuuu",
+          "concept_name": "file_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"2B, 2C, 3E, 3F\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "2B, 2C, 3E, 3F",
+            "count": 1,
+            "unique_patient_count": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "file_sample_id",
+          "concept_name": "related sample ID(s)",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"sD sub:2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "sD sub:2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "file_sample_id",
+          "concept_name": "related sample ID(s)",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"sF sub:3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "sF sub:3",
+            "count": 1,
+            "unique_patient_count": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_alt_text_field_qhlcwlkvxc",
+          "concept_name": "m2m_alt_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"subject 1 record 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "subject 1 record 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_alt_text_field_qhlcwlkvxc",
+          "concept_name": "m2m_alt_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"subject 1 record 2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "subject 1 record 2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_alt_text_field_qhlcwlkvxc",
+          "concept_name": "m2m_alt_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"subject 1,2 record 5\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "subject 1,2 record 5",
+            "count": 1,
+            "unique_patient_count": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_alt_text_field_qhlcwlkvxc",
+          "concept_name": "m2m_alt_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"subjects 1, 2 record 4\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "subjects 1, 2 record 4",
+            "count": 1,
+            "unique_patient_count": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_alt_text_field_qhlcwlkvxc",
+          "concept_name": "m2m_alt_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"subjects 1,2,3,99 record 3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "subjects 1,2,3,99 record 3",
+            "count": 1,
+            "unique_patient_count": 3
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_date_field_gqoxmyeeyx",
+          "concept_name": "m2m_date_field",
+          "concept_type": "date",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_float_category_field_eeggbypgjq",
+          "concept_name": "m2m_float_category_field",
+          "concept_type": "number_with_categories",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"fcat1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "fcat1",
+            "count": 1,
+            "unique_patient_count": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_float_category_field_eeggbypgjq",
+          "concept_name": "m2m_float_category_field",
+          "concept_type": "number_with_categories",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"fcat2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "fcat2",
+            "count": 1,
+            "unique_patient_count": 3
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_float_field_mdidpwyicx",
+          "concept_name": "m2m_float_field",
+          "concept_type": "number",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 3
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_id_field_wvpuanbtqo",
+          "concept_name": "m2m_id_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"scA s1,2,3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "scA s1,2,3",
+            "count": 1,
+            "unique_patient_count": 3
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_id_field_wvpuanbtqo",
+          "concept_name": "m2m_id_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"scB s2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "scB s2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_id_field_wvpuanbtqo",
+          "concept_name": "m2m_id_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"scC s2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "scC s2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_id_field_wvpuanbtqo",
+          "concept_name": "m2m_id_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"scD s2,3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "scD s2,3",
+            "count": 1,
+            "unique_patient_count": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_id_field_wvpuanbtqo",
+          "concept_name": "m2m_id_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"scE s2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "scE s2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_integer_category_field_ivqmmkjomz",
+          "concept_name": "m2m_integer_category_field",
+          "concept_type": "number_with_categories",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"cat1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "cat1",
+            "count": 1,
+            "unique_patient_count": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_integer_field_dpcbrattds",
+          "concept_name": "m2m_integer_field",
+          "concept_type": "number",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 3
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_sometimes_field_ucyvgnvrwo",
+          "concept_name": "m2m_sometimes_field",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "3 missing value(s) vs 4 subject(s) in the dataset (75%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 3,
+            "total_subjects": 4,
+            "rate": 0.75,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_sometimes_field_ucyvgnvrwo",
+          "concept_name": "m2m_sometimes_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"val1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "val1",
+            "count": 1,
+            "unique_patient_count": 3
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_sometimes_field_ucyvgnvrwo",
+          "concept_name": "m2m_sometimes_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"val2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "val2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_text_field_uebuxadqgk",
+          "concept_name": "m2m_text_field",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "sample_id_obvrhkeigy",
+          "concept_name": "sample_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"sA sub:1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "sA sub:1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "sample_id_obvrhkeigy",
+          "concept_name": "sample_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"sB sub:2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "sB sub:2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "sample_id_obvrhkeigy",
+          "concept_name": "sample_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"sC sub:2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "sC sub:2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "sample_id_obvrhkeigy",
+          "concept_name": "sample_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"sD sub:2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "sD sub:2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "sample_id_obvrhkeigy",
+          "concept_name": "sample_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"sE sub:3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "sE sub:3",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "sample_id_obvrhkeigy",
+          "concept_name": "sample_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"sF sub:3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "sF sub:3",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "sample_id_obvrhkeigy",
+          "concept_name": "sample_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"sG sub:3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "sG sub:3",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "alt_subject_id_qcwwtkazch",
+          "concept_name": "alt_subject_id",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"alt2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "alt2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "submatch_text_field_ndwrhswrul",
+          "concept_name": "submatch_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"record 1 on subject 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "record 1 on subject 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "submatch_text_field_ndwrhswrul",
+          "concept_name": "submatch_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"record 1 on subject 2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "record 1 on subject 2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "submatch_text_field_ndwrhswrul",
+          "concept_name": "submatch_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"record 2 on subject 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "record 2 on subject 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "submatch_text_field_ndwrhswrul",
+          "concept_name": "submatch_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"record 3 on subject 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "record 3 on subject 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "submatch_text_field_yujnyznhgq",
+          "concept_name": "submatch_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"record 1 on subject 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "record 1 on subject 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "submatch_text_field_yujnyznhgq",
+          "concept_name": "submatch_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"record 1 on subject 2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "record 1 on subject 2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "submatch_text_field_yujnyznhgq",
+          "concept_name": "submatch_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"record 2 on subject 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "record 2 on subject 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "submatch_text_field_yujnyznhgq",
+          "concept_name": "submatch_text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"record 3 on subject 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "record 3 on subject 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "boolean_field_fqzboazcts",
+          "concept_name": "boolean_field",
+          "concept_type": "boolean",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"False\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "False",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "category_field_gjngsteuuf",
+          "concept_name": "category_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"cat 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "cat 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "category_field_gjngsteuuf",
+          "concept_name": "category_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"cat 2A\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "cat 2A",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "category_field_gjngsteuuf",
+          "concept_name": "category_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"cat 2B\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "cat 2B",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "category_field_gjngsteuuf",
+          "concept_name": "category_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"cat 2C\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "cat 2C",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "text_field_pqnqvxqepq",
+          "concept_name": "text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"this is a longer text field\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "this is a longer text field",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "text_field_pqnqvxqepq",
+          "concept_name": "text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"this is a longer text field also\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "this is a longer text field also",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "text_field_pqnqvxqepq",
+          "concept_name": "text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"this is a longer text field also also\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "this is a longer text field also also",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "text_field_pqnqvxqepq",
+          "concept_name": "text_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"this is a longer text field also also also\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "this is a longer text field also also also",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "alt_subject_id1_mlfxszqjun",
+          "concept_name": "alt_subject_id1",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"alt1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "alt1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "alt_subject_id1_mlfxszqjun",
+          "concept_name": "alt_subject_id1",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"alt2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "alt2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "alt_subject_id1_mlfxszqjun",
+          "concept_name": "alt_subject_id1",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"alt3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "alt3",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "current_age",
+          "concept_name": "current age",
+          "concept_type": "number_with_categories",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"90 and above\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "90 and above",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_eztofxigrg",
+          "concept_name": "id",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_ntcknburqk",
+          "concept_name": "id",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_ntirwvmotn",
+          "concept_name": "id",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_omrjerincd",
+          "concept_name": "id",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_pkotmxnszp",
+          "concept_name": "id",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_weuperdtds",
+          "concept_name": "id",
+          "concept_type": "text",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "many_to_many_field_mluwfczlzg",
+          "concept_name": "many_to_many_field",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "many_to_many_field_mluwfczlzg",
+          "concept_name": "many_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s1 val 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s1 val 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "many_to_many_field_mluwfczlzg",
+          "concept_name": "many_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "many_to_many_field_mluwfczlzg",
+          "concept_name": "many_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "many_to_many_field_mluwfczlzg",
+          "concept_name": "many_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 3",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "one_to_many_field_xmqviwciqb",
+          "concept_name": "one_to_many_field",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "one_to_many_field_xmqviwciqb",
+          "concept_name": "one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s1 val1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s1 val1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "one_to_many_field_xmqviwciqb",
+          "concept_name": "one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "one_to_many_field_xmqviwciqb",
+          "concept_name": "one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "one_to_many_field_xmqviwciqb",
+          "concept_name": "one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 3",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "one_to_one_field_ybuxdeovls",
+          "concept_name": "one_to_one_field",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "one_to_one_field_ybuxdeovls",
+          "concept_name": "one_to_one_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s1 val 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s1 val 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "one_to_one_field_ybuxdeovls",
+          "concept_name": "one_to_one_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "reverse_many_to_many_field_jhmwaxwjei",
+          "concept_name": "reverse_many_to_many_field",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "reverse_many_to_many_field_jhmwaxwjei",
+          "concept_name": "reverse_many_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s1 val 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s1 val 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "reverse_many_to_many_field_jhmwaxwjei",
+          "concept_name": "reverse_many_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "reverse_many_to_many_field_jhmwaxwjei",
+          "concept_name": "reverse_many_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "reverse_many_to_many_field_jhmwaxwjei",
+          "concept_name": "reverse_many_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 3",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "reverse_one_to_one_field_gcadlpspqs",
+          "concept_name": "reverse_one_to_one_field",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "reverse_one_to_one_field_gcadlpspqs",
+          "concept_name": "reverse_one_to_one_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s1 val 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s1 val 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "reverse_one_to_one_field_gcadlpspqs",
+          "concept_name": "reverse_one_to_one_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "second_one_to_many_field_mdjdbiaqes",
+          "concept_name": "second_one_to_many_field",
+          "concept_type": "category",
+          "kind": "high_missingness",
+          "severity": "medium",
+          "message": "2 missing value(s) vs 4 subject(s) in the dataset (50%, threshold 30%). Cannot distinguish genuinely-absent source data from malformed-then-silently-nulled-at-ETL data via this API - see README Limitations.",
+          "details": {
+            "count_missing_values": 2,
+            "total_subjects": 4,
+            "rate": 0.5,
+            "threshold": 0.3,
+            "count_subjects_with_missing_values": 2
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "second_one_to_many_field_mdjdbiaqes",
+          "concept_name": "second_one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s1 val 1A\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s1 val 1A",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "second_one_to_many_field_mdjdbiaqes",
+          "concept_name": "second_one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 1A\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 1A",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "second_one_to_many_field_mdjdbiaqes",
+          "concept_name": "second_one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 1B\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 1B",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "second_one_to_many_field_mdjdbiaqes",
+          "concept_name": "second_one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 1C\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 1C",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "second_one_to_many_field_mdjdbiaqes",
+          "concept_name": "second_one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 2A\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 2A",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "second_one_to_many_field_mdjdbiaqes",
+          "concept_name": "second_one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 2B\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 2B",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "second_one_to_many_field_mdjdbiaqes",
+          "concept_name": "second_one_to_many_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"s2 val 2C\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "s2 val 2C",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "subject_field_uabgamtknn",
+          "concept_name": "subject_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"subject 1\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "subject 1",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "subject_field_uabgamtknn",
+          "concept_name": "subject_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"subject 2\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "subject 2",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "subject_field_uabgamtknn",
+          "concept_name": "subject_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"subject 3\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "subject 3",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "subject_field_uabgamtknn",
+          "concept_name": "subject_field",
+          "concept_type": "category",
+          "kind": "possible_typo_or_rare_value",
+          "severity": "low",
+          "message": "Category \"subject 4\" occurs exactly once across the dataset - possible typo or a genuinely rare value.",
+          "details": {
+            "category": "subject 4",
+            "count": 1,
+            "unique_patient_count": 1
+          }
+        }
+      ],
+      "skipped": [],
+      "error": null,
+      "concepts": [
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "file_id_awchsrhuuu",
+          "concept_name": "file_id",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 4,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "file_sample_id",
+          "concept_name": "related sample ID(s)",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 2,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_fvvrdxvdoq",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_ieygzsdlar",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_alt_text_field_qhlcwlkvxc",
+          "concept_name": "m2m_alt_text_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 5,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_efwdyzvhgs",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_boolean_field_heowdutadj",
+          "concept_name": "m2m_boolean_field",
+          "concept_type": "boolean",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_category_field_dzzukfcnfi",
+          "concept_name": "m2m_category_field",
+          "concept_type": "category",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_date_field_gqoxmyeeyx",
+          "concept_name": "m2m_date_field",
+          "concept_type": "date",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_float_category_field_eeggbypgjq",
+          "concept_name": "m2m_float_category_field",
+          "concept_type": "number_with_categories",
+          "status": "issues",
+          "issue_count": 2,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_float_field_mdidpwyicx",
+          "concept_name": "m2m_float_field",
+          "concept_type": "number",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_id_field_wvpuanbtqo",
+          "concept_name": "m2m_id_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 5,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_integer_category_field_ivqmmkjomz",
+          "concept_name": "m2m_integer_category_field",
+          "concept_type": "number_with_categories",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_integer_field_dpcbrattds",
+          "concept_name": "m2m_integer_field",
+          "concept_type": "number",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_sometimes_field_ucyvgnvrwo",
+          "concept_name": "m2m_sometimes_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 3,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "m2m_text_field_uebuxadqgk",
+          "concept_name": "m2m_text_field",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_ihtbmjvtbx",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "sample_id_obvrhkeigy",
+          "concept_name": "sample_id",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 7,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "alt_subject_id_qcwwtkazch",
+          "concept_name": "alt_subject_id",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_gzzozefiuu",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "submatch_text_field_ndwrhswrul",
+          "concept_name": "submatch_text_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 4,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "submatch_text_field_yujnyznhgq",
+          "concept_name": "submatch_text_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 4,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "boolean_field_fqzboazcts",
+          "concept_name": "boolean_field",
+          "concept_type": "boolean",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "category_field_gjngsteuuf",
+          "concept_name": "category_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 4,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "date_field_snpuxpbyyb",
+          "concept_name": "date_field",
+          "concept_type": "date",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "float_field_jqmxpsuqzz",
+          "concept_name": "float_field",
+          "concept_type": "number",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_llmmgphdhv",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "integer_field_gemyykndyi",
+          "concept_name": "integer_field",
+          "concept_type": "number",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "text_field_pqnqvxqepq",
+          "concept_name": "text_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 4,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "alt_subject_id1_mlfxszqjun",
+          "concept_name": "alt_subject_id1",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 3,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "alt_subject_id2_gknqenzeup",
+          "concept_name": "alt_subject_id2",
+          "concept_type": "number",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "current_age",
+          "concept_name": "current age",
+          "concept_type": "number_with_categories",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_eztofxigrg",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_ntcknburqk",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_ntirwvmotn",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_omrjerincd",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_pkotmxnszp",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_uygubqdhur",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "id_weuperdtds",
+          "concept_name": "id",
+          "concept_type": "text",
+          "status": "issues",
+          "issue_count": 1,
+          "issue_kinds": [
+            "high_missingness"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "many_to_many_field_mluwfczlzg",
+          "concept_name": "many_to_many_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 5,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "one_to_many_field_xmqviwciqb",
+          "concept_name": "one_to_many_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 5,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "one_to_one_field_ybuxdeovls",
+          "concept_name": "one_to_one_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 3,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "reverse_many_to_many_field_jhmwaxwjei",
+          "concept_name": "reverse_many_to_many_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 5,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "reverse_one_to_one_field_gcadlpspqs",
+          "concept_name": "reverse_one_to_one_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 3,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "second_one_to_many_field_mdjdbiaqes",
+          "concept_name": "second_one_to_many_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 8,
+          "issue_kinds": [
+            "high_missingness",
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "subject_field_uabgamtknn",
+          "concept_name": "subject_field",
+          "concept_type": "category",
+          "status": "issues",
+          "issue_count": 4,
+          "issue_kinds": [
+            "possible_typo_or_rare_value"
+          ],
+          "skip_reason": null
+        },
+        {
+          "dataset": "dataset3_stored",
+          "concept_id": "subject_id_alt1",
+          "concept_name": "alt1 from Chiron subject IDs",
+          "concept_type": "text",
+          "status": "ok",
+          "issue_count": 0,
+          "issue_kinds": [],
+          "skip_reason": null
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_issues": 146,
+    "total_datasets": 3,
+    "issues_by_kind": {
+      "possible_typo_or_rare_value": 97,
+      "high_missingness": 49
+    }
+  }
+}

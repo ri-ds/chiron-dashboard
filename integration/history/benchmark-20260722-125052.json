@@ -1,0 +1,1789 @@
+{
+  "started": "2026-07-22T16:50:55+00:00",
+  "finished": "2026-07-22T16:51:40+00:00",
+  "wall_s": 45.15,
+  "base_url": "http://127.0.0.1:8000",
+  "dataset": "dataset1_stored",
+  "config": {
+    "iterations": 30,
+    "burst_total": 60,
+    "concurrency": 8,
+    "flow_reps": 15
+  },
+  "discovery": {
+    "dataset": "dataset1_stored",
+    "concept": "cra_aliquot_date",
+    "report": 136,
+    "category": 3
+  },
+  "n_controls": 60,
+  "n_pass": 58,
+  "n_fail": 2,
+  "n_na": 0,
+  "scenarios": {
+    "auth": {
+      "scenario": {
+        "id": "auth",
+        "name": "Auth / whoami",
+        "group": "metadata",
+        "method": "GET",
+        "path": "/api/v2/auth/",
+        "tier": "light",
+        "params": {},
+        "throughput": true,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 2.88,
+        "p95": 3.84,
+        "p99": 4.05,
+        "mean": 2.95,
+        "min": 2.15,
+        "max": 4.05,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": {
+        "n": 60,
+        "n_error": 0,
+        "p50": 11.99,
+        "p95": 15.68,
+        "p99": 19.1,
+        "mean": 12.09,
+        "min": 6.62,
+        "max": 19.1,
+        "error_rate": 0.0,
+        "throughput_rps": 616.8,
+        "wall_s": 0.097,
+        "statuses": {
+          "200": 60
+        }
+      }
+    },
+    "dataset_list": {
+      "scenario": {
+        "id": "dataset_list",
+        "name": "List datasets",
+        "group": "metadata",
+        "method": "GET",
+        "path": "/api/v2/dataset/",
+        "tier": "light",
+        "params": {},
+        "throughput": true,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 3.66,
+        "p95": 7.58,
+        "p99": 13.85,
+        "mean": 4.13,
+        "min": 2.45,
+        "max": 13.85,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": {
+        "n": 60,
+        "n_error": 0,
+        "p50": 20.67,
+        "p95": 34.49,
+        "p99": 36.81,
+        "mean": 22.22,
+        "min": 12.39,
+        "max": 36.81,
+        "error_rate": 0.0,
+        "throughput_rps": 344.7,
+        "wall_s": 0.174,
+        "statuses": {
+          "200": 60
+        }
+      }
+    },
+    "categories": {
+      "scenario": {
+        "id": "categories",
+        "name": "Concept category tree",
+        "group": "metadata",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/concept_categories/",
+        "tier": "light",
+        "params": {},
+        "throughput": true,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 14.26,
+        "p95": 17.53,
+        "p99": 23.77,
+        "mean": 14.79,
+        "min": 13.68,
+        "max": 23.77,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": {
+        "n": 60,
+        "n_error": 0,
+        "p50": 154.25,
+        "p95": 226.51,
+        "p99": 232.19,
+        "mean": 161.23,
+        "min": 62.03,
+        "max": 232.19,
+        "error_rate": 0.0,
+        "throughput_rps": 48.4,
+        "wall_s": 1.24,
+        "statuses": {
+          "200": 60
+        }
+      }
+    },
+    "collections": {
+      "scenario": {
+        "id": "collections",
+        "name": "List collections",
+        "group": "metadata",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/collections/",
+        "tier": "light",
+        "params": {},
+        "throughput": false,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 8.88,
+        "p95": 13.51,
+        "p99": 21.15,
+        "mean": 9.39,
+        "min": 7.08,
+        "max": 21.15,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "concepts_page": {
+      "scenario": {
+        "id": "concepts_page",
+        "name": "List concepts (page 1)",
+        "group": "metadata",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/concepts/",
+        "tier": "medium",
+        "params": {
+          "page": 1,
+          "page_size": 100
+        },
+        "throughput": true,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 125.76,
+        "p95": 142.8,
+        "p99": 235.64,
+        "mean": 129.56,
+        "min": 117.85,
+        "max": 235.64,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": {
+        "n": 60,
+        "n_error": 0,
+        "p50": 1653.23,
+        "p95": 1731.85,
+        "p99": 1746.28,
+        "mean": 1585.31,
+        "min": 640.19,
+        "max": 1746.28,
+        "error_rate": 0.0,
+        "throughput_rps": 4.9,
+        "wall_s": 12.202,
+        "statuses": {
+          "200": 60
+        }
+      }
+    },
+    "concepts_big": {
+      "scenario": {
+        "id": "concepts_big",
+        "name": "List concepts (max page 1000)",
+        "group": "metadata",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/concepts/",
+        "tier": "medium",
+        "params": {
+          "page": 1,
+          "page_size": 1000
+        },
+        "throughput": false,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 119.93,
+        "p95": 212.93,
+        "p99": 247.4,
+        "mean": 128.34,
+        "min": 118.15,
+        "max": 247.4,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "concept_detail": {
+      "scenario": {
+        "id": "concept_detail",
+        "name": "Concept detail",
+        "group": "metadata",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/concepts/cra_aliquot_date/",
+        "tier": "medium",
+        "params": {},
+        "throughput": false,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 5.27,
+        "p95": 7.0,
+        "p99": 8.03,
+        "mean": 5.48,
+        "min": 4.41,
+        "max": 8.03,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "concept_stats": {
+      "scenario": {
+        "id": "concept_stats",
+        "name": "Concept detail + statistics",
+        "group": "query",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/concepts/cra_aliquot_date/",
+        "tier": "heavy",
+        "params": {
+          "include_statistics": "true"
+        },
+        "throughput": false,
+        "expected_status": 200,
+        "note": "triggers a warehouse stats query"
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 98.1,
+        "p95": 101.49,
+        "p99": 179.55,
+        "mean": 100.26,
+        "min": 93.71,
+        "max": 179.55,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "category_detail": {
+      "scenario": {
+        "id": "category_detail",
+        "name": "Category detail",
+        "group": "metadata",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/concept_categories/3/",
+        "tier": "light",
+        "params": {},
+        "throughput": false,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 20.5,
+        "p95": 23.26,
+        "p99": 23.44,
+        "mean": 20.68,
+        "min": 19.51,
+        "max": 23.44,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "concept_search": {
+      "scenario": {
+        "id": "concept_search",
+        "name": "Concept search",
+        "group": "query",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/concept_categories/concept_search/",
+        "tier": "medium",
+        "params": {
+          "search": "a",
+          "concept_type": "cohort"
+        },
+        "throughput": false,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 62.24,
+        "p95": 131.41,
+        "p99": 140.52,
+        "mean": 66.21,
+        "min": 58.24,
+        "max": 140.52,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "cohort_def": {
+      "scenario": {
+        "id": "cohort_def",
+        "name": "Load active cohort def",
+        "group": "query",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/cohort_def/",
+        "tier": "medium",
+        "params": {},
+        "throughput": false,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 3.47,
+        "p95": 4.61,
+        "p99": 4.89,
+        "mean": 3.52,
+        "min": 2.75,
+        "max": 4.89,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "qt_preview": {
+      "scenario": {
+        "id": "qt_preview",
+        "name": "Query preview (rows)",
+        "group": "query",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/query_tools/preview/",
+        "tier": "heavy",
+        "params": {},
+        "throughput": false,
+        "expected_status": 200,
+        "note": "warehouse query"
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 13.97,
+        "p95": 15.64,
+        "p99": 16.27,
+        "mean": 13.96,
+        "min": 12.14,
+        "max": 16.27,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "qt_preview_meta": {
+      "scenario": {
+        "id": "qt_preview_meta",
+        "name": "Query preview metadata",
+        "group": "query",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/query_tools/preview_metadata/",
+        "tier": "medium",
+        "params": {},
+        "throughput": false,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 5.13,
+        "p95": 5.67,
+        "p99": 6.58,
+        "mean": 5.15,
+        "min": 4.5,
+        "max": 6.58,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "table_def": {
+      "scenario": {
+        "id": "table_def",
+        "name": "Load active table def",
+        "group": "query",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/table_def/",
+        "tier": "medium",
+        "params": {},
+        "throughput": false,
+        "expected_status": 400,
+        "note": "400 'no active snapshot' when none set \u2014 measured as a reachability/latency path"
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 30,
+        "p50": 3.66,
+        "p95": 4.31,
+        "p99": 4.81,
+        "mean": 3.71,
+        "min": 2.98,
+        "max": 4.81,
+        "error_rate": 1.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "400": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "reports_list": {
+      "scenario": {
+        "id": "reports_list",
+        "name": "List reports (paginated)",
+        "group": "reports",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/reports/",
+        "tier": "medium",
+        "params": {},
+        "throughput": true,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 65.58,
+        "p95": 68.88,
+        "p99": 68.91,
+        "mean": 66.16,
+        "min": 64.0,
+        "max": 68.91,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": {
+        "n": 60,
+        "n_error": 0,
+        "p50": 833.34,
+        "p95": 938.45,
+        "p99": 947.59,
+        "mean": 821.45,
+        "min": 459.97,
+        "max": 947.59,
+        "error_rate": 0.0,
+        "throughput_rps": 9.4,
+        "wall_s": 6.381,
+        "statuses": {
+          "200": 60
+        }
+      }
+    },
+    "viewable_reports": {
+      "scenario": {
+        "id": "viewable_reports",
+        "name": "Viewable reports",
+        "group": "reports",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/reports/viewable_reports/",
+        "tier": "medium",
+        "params": {},
+        "throughput": false,
+        "expected_status": 200,
+        "note": ""
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 10.86,
+        "p95": 12.36,
+        "p99": 12.4,
+        "mean": 11.06,
+        "min": 9.58,
+        "max": 12.4,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    },
+    "report_preview": {
+      "scenario": {
+        "id": "report_preview",
+        "name": "Report preview (warehouse)",
+        "group": "reports",
+        "method": "GET",
+        "path": "/api/v2/dataset1_stored/report_tools/136/preview/",
+        "tier": "heavy",
+        "params": {},
+        "throughput": false,
+        "expected_status": 200,
+        "note": "warehouse query"
+      },
+      "latency": {
+        "n": 30,
+        "n_error": 0,
+        "p50": 52.1,
+        "p95": 72.62,
+        "p99": 83.23,
+        "mean": 54.18,
+        "min": 45.65,
+        "max": 83.23,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 30
+        }
+      },
+      "corrected_error_rate": 0.0,
+      "throughput": null
+    }
+  },
+  "flows": {
+    "flow_bootstrap": {
+      "flow": {
+        "id": "flow_bootstrap",
+        "name": "App bootstrap (login landing)",
+        "threshold_ms": 800,
+        "steps": [
+          "/api/v2/auth/",
+          "/api/v2/dataset/"
+        ]
+      },
+      "total_ms": {
+        "n": 15,
+        "n_error": 0,
+        "p50": 7.52,
+        "p95": 10.08,
+        "p99": 10.08,
+        "mean": 7.82,
+        "min": 6.59,
+        "max": 10.08,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 15
+        }
+      }
+    },
+    "flow_dataset_home": {
+      "flow": {
+        "id": "flow_dataset_home",
+        "name": "Open a dataset (home + query builder)",
+        "threshold_ms": 1800,
+        "steps": [
+          "/api/v2/dataset1_stored/concept_categories/",
+          "/api/v2/dataset1_stored/concepts/?page=1&page_size=100",
+          "/api/v2/dataset1_stored/collections/"
+        ]
+      },
+      "total_ms": {
+        "n": 15,
+        "n_error": 0,
+        "p50": 147.3,
+        "p95": 248.16,
+        "p99": 248.16,
+        "mean": 164.22,
+        "min": 145.06,
+        "max": 248.16,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 15
+        }
+      }
+    },
+    "flow_query_preview": {
+      "flow": {
+        "id": "flow_query_preview",
+        "name": "Run a query preview",
+        "threshold_ms": 3000,
+        "steps": [
+          "/api/v2/dataset1_stored/cohort_def/",
+          "/api/v2/dataset1_stored/query_tools/preview_metadata/",
+          "/api/v2/dataset1_stored/query_tools/preview/"
+        ]
+      },
+      "total_ms": {
+        "n": 15,
+        "n_error": 0,
+        "p50": 23.45,
+        "p95": 25.92,
+        "p99": 25.92,
+        "mean": 23.27,
+        "min": 21.58,
+        "max": 25.92,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 15
+        }
+      }
+    },
+    "flow_reports": {
+      "flow": {
+        "id": "flow_reports",
+        "name": "Open the reports list",
+        "threshold_ms": 1500,
+        "steps": [
+          "/api/v2/dataset1_stored/reports/",
+          "/api/v2/dataset1_stored/reports/viewable_reports/"
+        ]
+      },
+      "total_ms": {
+        "n": 15,
+        "n_error": 0,
+        "p50": 76.45,
+        "p95": 142.69,
+        "p99": 142.69,
+        "mean": 80.92,
+        "min": 74.83,
+        "max": 142.69,
+        "error_rate": 0.0,
+        "throughput_rps": 0.0,
+        "wall_s": 0.0,
+        "statuses": {
+          "200": 15
+        }
+      }
+    }
+  },
+  "controls": [
+    {
+      "control": {
+        "id": "auth__p95",
+        "name": "Auth / whoami: 95th-percentile response under 300 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "auth",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 300.0,
+        "unit": "ms",
+        "rationale": "light-tier endpoint"
+      },
+      "pass": true,
+      "value": 3.84,
+      "detail": "3.84 ms <= 300"
+    },
+    {
+      "control": {
+        "id": "auth__p99",
+        "name": "Auth / whoami: 99th-percentile response under 600 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "auth",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 600.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 4.05,
+      "detail": "4.05 ms <= 600"
+    },
+    {
+      "control": {
+        "id": "auth__err",
+        "name": "Auth / whoami: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "auth",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "auth__rps",
+        "name": "Auth / whoami: sustains \u2265 25 req/s under concurrency",
+        "category": "API throughput",
+        "kind": "api_throughput",
+        "ref": "auth",
+        "metric": "throughput_rps",
+        "comparator": ">=",
+        "threshold": 25.0,
+        "unit": "req/s",
+        "rationale": "single-node dev server target"
+      },
+      "pass": true,
+      "value": 616.8,
+      "detail": "616.8 req/s >= 25"
+    },
+    {
+      "control": {
+        "id": "dataset_list__p95",
+        "name": "List datasets: 95th-percentile response under 300 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "dataset_list",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 300.0,
+        "unit": "ms",
+        "rationale": "light-tier endpoint"
+      },
+      "pass": true,
+      "value": 7.58,
+      "detail": "7.58 ms <= 300"
+    },
+    {
+      "control": {
+        "id": "dataset_list__p99",
+        "name": "List datasets: 99th-percentile response under 600 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "dataset_list",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 600.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 13.85,
+      "detail": "13.85 ms <= 600"
+    },
+    {
+      "control": {
+        "id": "dataset_list__err",
+        "name": "List datasets: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "dataset_list",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "dataset_list__rps",
+        "name": "List datasets: sustains \u2265 25 req/s under concurrency",
+        "category": "API throughput",
+        "kind": "api_throughput",
+        "ref": "dataset_list",
+        "metric": "throughput_rps",
+        "comparator": ">=",
+        "threshold": 25.0,
+        "unit": "req/s",
+        "rationale": "single-node dev server target"
+      },
+      "pass": true,
+      "value": 344.7,
+      "detail": "344.7 req/s >= 25"
+    },
+    {
+      "control": {
+        "id": "categories__p95",
+        "name": "Concept category tree: 95th-percentile response under 300 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "categories",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 300.0,
+        "unit": "ms",
+        "rationale": "light-tier endpoint"
+      },
+      "pass": true,
+      "value": 17.53,
+      "detail": "17.53 ms <= 300"
+    },
+    {
+      "control": {
+        "id": "categories__p99",
+        "name": "Concept category tree: 99th-percentile response under 600 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "categories",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 600.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 23.77,
+      "detail": "23.77 ms <= 600"
+    },
+    {
+      "control": {
+        "id": "categories__err",
+        "name": "Concept category tree: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "categories",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "categories__rps",
+        "name": "Concept category tree: sustains \u2265 25 req/s under concurrency",
+        "category": "API throughput",
+        "kind": "api_throughput",
+        "ref": "categories",
+        "metric": "throughput_rps",
+        "comparator": ">=",
+        "threshold": 25.0,
+        "unit": "req/s",
+        "rationale": "single-node dev server target"
+      },
+      "pass": true,
+      "value": 48.4,
+      "detail": "48.4 req/s >= 25"
+    },
+    {
+      "control": {
+        "id": "collections__p95",
+        "name": "List collections: 95th-percentile response under 300 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "collections",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 300.0,
+        "unit": "ms",
+        "rationale": "light-tier endpoint"
+      },
+      "pass": true,
+      "value": 13.51,
+      "detail": "13.51 ms <= 300"
+    },
+    {
+      "control": {
+        "id": "collections__p99",
+        "name": "List collections: 99th-percentile response under 600 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "collections",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 600.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 21.15,
+      "detail": "21.15 ms <= 600"
+    },
+    {
+      "control": {
+        "id": "collections__err",
+        "name": "List collections: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "collections",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "concepts_page__p95",
+        "name": "List concepts (page 1): 95th-percentile response under 900 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "concepts_page",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 900.0,
+        "unit": "ms",
+        "rationale": "medium-tier endpoint"
+      },
+      "pass": true,
+      "value": 142.8,
+      "detail": "142.8 ms <= 900"
+    },
+    {
+      "control": {
+        "id": "concepts_page__p99",
+        "name": "List concepts (page 1): 99th-percentile response under 1800 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "concepts_page",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 1800.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 235.64,
+      "detail": "235.64 ms <= 1800"
+    },
+    {
+      "control": {
+        "id": "concepts_page__err",
+        "name": "List concepts (page 1): zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "concepts_page",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "concepts_page__rps",
+        "name": "List concepts (page 1): sustains \u2265 12 req/s under concurrency",
+        "category": "API throughput",
+        "kind": "api_throughput",
+        "ref": "concepts_page",
+        "metric": "throughput_rps",
+        "comparator": ">=",
+        "threshold": 12.0,
+        "unit": "req/s",
+        "rationale": "single-node dev server target"
+      },
+      "pass": false,
+      "value": 4.9,
+      "detail": "4.9 req/s >= 12"
+    },
+    {
+      "control": {
+        "id": "concepts_big__p95",
+        "name": "List concepts (max page 1000): 95th-percentile response under 900 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "concepts_big",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 900.0,
+        "unit": "ms",
+        "rationale": "medium-tier endpoint"
+      },
+      "pass": true,
+      "value": 212.93,
+      "detail": "212.93 ms <= 900"
+    },
+    {
+      "control": {
+        "id": "concepts_big__p99",
+        "name": "List concepts (max page 1000): 99th-percentile response under 1800 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "concepts_big",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 1800.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 247.4,
+      "detail": "247.4 ms <= 1800"
+    },
+    {
+      "control": {
+        "id": "concepts_big__err",
+        "name": "List concepts (max page 1000): zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "concepts_big",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "concept_detail__p95",
+        "name": "Concept detail: 95th-percentile response under 900 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "concept_detail",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 900.0,
+        "unit": "ms",
+        "rationale": "medium-tier endpoint"
+      },
+      "pass": true,
+      "value": 7.0,
+      "detail": "7 ms <= 900"
+    },
+    {
+      "control": {
+        "id": "concept_detail__p99",
+        "name": "Concept detail: 99th-percentile response under 1800 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "concept_detail",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 1800.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 8.03,
+      "detail": "8.03 ms <= 1800"
+    },
+    {
+      "control": {
+        "id": "concept_detail__err",
+        "name": "Concept detail: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "concept_detail",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "concept_stats__p95",
+        "name": "Concept detail + statistics: 95th-percentile response under 2500 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "concept_stats",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 2500.0,
+        "unit": "ms",
+        "rationale": "heavy-tier endpoint"
+      },
+      "pass": true,
+      "value": 101.49,
+      "detail": "101.49 ms <= 2500"
+    },
+    {
+      "control": {
+        "id": "concept_stats__p99",
+        "name": "Concept detail + statistics: 99th-percentile response under 5000 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "concept_stats",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 5000.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 179.55,
+      "detail": "179.55 ms <= 5000"
+    },
+    {
+      "control": {
+        "id": "concept_stats__err",
+        "name": "Concept detail + statistics: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "concept_stats",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "category_detail__p95",
+        "name": "Category detail: 95th-percentile response under 300 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "category_detail",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 300.0,
+        "unit": "ms",
+        "rationale": "light-tier endpoint"
+      },
+      "pass": true,
+      "value": 23.26,
+      "detail": "23.26 ms <= 300"
+    },
+    {
+      "control": {
+        "id": "category_detail__p99",
+        "name": "Category detail: 99th-percentile response under 600 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "category_detail",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 600.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 23.44,
+      "detail": "23.44 ms <= 600"
+    },
+    {
+      "control": {
+        "id": "category_detail__err",
+        "name": "Category detail: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "category_detail",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "concept_search__p95",
+        "name": "Concept search: 95th-percentile response under 900 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "concept_search",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 900.0,
+        "unit": "ms",
+        "rationale": "medium-tier endpoint"
+      },
+      "pass": true,
+      "value": 131.41,
+      "detail": "131.41 ms <= 900"
+    },
+    {
+      "control": {
+        "id": "concept_search__p99",
+        "name": "Concept search: 99th-percentile response under 1800 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "concept_search",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 1800.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 140.52,
+      "detail": "140.52 ms <= 1800"
+    },
+    {
+      "control": {
+        "id": "concept_search__err",
+        "name": "Concept search: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "concept_search",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "cohort_def__p95",
+        "name": "Load active cohort def: 95th-percentile response under 900 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "cohort_def",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 900.0,
+        "unit": "ms",
+        "rationale": "medium-tier endpoint"
+      },
+      "pass": true,
+      "value": 4.61,
+      "detail": "4.61 ms <= 900"
+    },
+    {
+      "control": {
+        "id": "cohort_def__p99",
+        "name": "Load active cohort def: 99th-percentile response under 1800 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "cohort_def",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 1800.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 4.89,
+      "detail": "4.89 ms <= 1800"
+    },
+    {
+      "control": {
+        "id": "cohort_def__err",
+        "name": "Load active cohort def: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "cohort_def",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "qt_preview__p95",
+        "name": "Query preview (rows): 95th-percentile response under 2500 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "qt_preview",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 2500.0,
+        "unit": "ms",
+        "rationale": "heavy-tier endpoint"
+      },
+      "pass": true,
+      "value": 15.64,
+      "detail": "15.64 ms <= 2500"
+    },
+    {
+      "control": {
+        "id": "qt_preview__p99",
+        "name": "Query preview (rows): 99th-percentile response under 5000 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "qt_preview",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 5000.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 16.27,
+      "detail": "16.27 ms <= 5000"
+    },
+    {
+      "control": {
+        "id": "qt_preview__err",
+        "name": "Query preview (rows): zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "qt_preview",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "qt_preview_meta__p95",
+        "name": "Query preview metadata: 95th-percentile response under 900 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "qt_preview_meta",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 900.0,
+        "unit": "ms",
+        "rationale": "medium-tier endpoint"
+      },
+      "pass": true,
+      "value": 5.67,
+      "detail": "5.67 ms <= 900"
+    },
+    {
+      "control": {
+        "id": "qt_preview_meta__p99",
+        "name": "Query preview metadata: 99th-percentile response under 1800 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "qt_preview_meta",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 1800.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 6.58,
+      "detail": "6.58 ms <= 1800"
+    },
+    {
+      "control": {
+        "id": "qt_preview_meta__err",
+        "name": "Query preview metadata: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "qt_preview_meta",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "table_def__p95",
+        "name": "Load active table def: 95th-percentile response under 900 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "table_def",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 900.0,
+        "unit": "ms",
+        "rationale": "medium-tier endpoint"
+      },
+      "pass": true,
+      "value": 4.31,
+      "detail": "4.31 ms <= 900"
+    },
+    {
+      "control": {
+        "id": "table_def__p99",
+        "name": "Load active table def: 99th-percentile response under 1800 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "table_def",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 1800.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 4.81,
+      "detail": "4.81 ms <= 1800"
+    },
+    {
+      "control": {
+        "id": "table_def__err",
+        "name": "Load active table def: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "table_def",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 400"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "reports_list__p95",
+        "name": "List reports (paginated): 95th-percentile response under 900 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "reports_list",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 900.0,
+        "unit": "ms",
+        "rationale": "medium-tier endpoint"
+      },
+      "pass": true,
+      "value": 68.88,
+      "detail": "68.88 ms <= 900"
+    },
+    {
+      "control": {
+        "id": "reports_list__p99",
+        "name": "List reports (paginated): 99th-percentile response under 1800 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "reports_list",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 1800.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 68.91,
+      "detail": "68.91 ms <= 1800"
+    },
+    {
+      "control": {
+        "id": "reports_list__err",
+        "name": "List reports (paginated): zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "reports_list",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "reports_list__rps",
+        "name": "List reports (paginated): sustains \u2265 12 req/s under concurrency",
+        "category": "API throughput",
+        "kind": "api_throughput",
+        "ref": "reports_list",
+        "metric": "throughput_rps",
+        "comparator": ">=",
+        "threshold": 12.0,
+        "unit": "req/s",
+        "rationale": "single-node dev server target"
+      },
+      "pass": false,
+      "value": 9.4,
+      "detail": "9.4 req/s >= 12"
+    },
+    {
+      "control": {
+        "id": "viewable_reports__p95",
+        "name": "Viewable reports: 95th-percentile response under 900 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "viewable_reports",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 900.0,
+        "unit": "ms",
+        "rationale": "medium-tier endpoint"
+      },
+      "pass": true,
+      "value": 12.36,
+      "detail": "12.36 ms <= 900"
+    },
+    {
+      "control": {
+        "id": "viewable_reports__p99",
+        "name": "Viewable reports: 99th-percentile response under 1800 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "viewable_reports",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 1800.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 12.4,
+      "detail": "12.4 ms <= 1800"
+    },
+    {
+      "control": {
+        "id": "viewable_reports__err",
+        "name": "Viewable reports: zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "viewable_reports",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "report_preview__p95",
+        "name": "Report preview (warehouse): 95th-percentile response under 2500 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "report_preview",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 2500.0,
+        "unit": "ms",
+        "rationale": "heavy-tier endpoint"
+      },
+      "pass": true,
+      "value": 72.62,
+      "detail": "72.62 ms <= 2500"
+    },
+    {
+      "control": {
+        "id": "report_preview__p99",
+        "name": "Report preview (warehouse): 99th-percentile response under 5000 ms",
+        "category": "API latency",
+        "kind": "api_latency",
+        "ref": "report_preview",
+        "metric": "p99",
+        "comparator": "<=",
+        "threshold": 5000.0,
+        "unit": "ms",
+        "rationale": "tail latency guard"
+      },
+      "pass": true,
+      "value": 83.23,
+      "detail": "83.23 ms <= 5000"
+    },
+    {
+      "control": {
+        "id": "report_preview__err",
+        "name": "Report preview (warehouse): zero unexpected errors",
+        "category": "API availability",
+        "kind": "api_error",
+        "ref": "report_preview",
+        "metric": "error_rate",
+        "comparator": "==",
+        "threshold": 0.0,
+        "unit": "fraction",
+        "rationale": "expects HTTP 200"
+      },
+      "pass": true,
+      "value": 0.0,
+      "detail": "0 fraction == 0"
+    },
+    {
+      "control": {
+        "id": "flow_bootstrap__total",
+        "name": "UI flow \u2014 App bootstrap (login landing): 95th-pct completes under 800 ms",
+        "category": "UI flow",
+        "kind": "ui_flow",
+        "ref": "flow_bootstrap",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 800.0,
+        "unit": "ms",
+        "rationale": "p95 of the summed backing API calls (API-bound portion of the interaction)"
+      },
+      "pass": true,
+      "value": 10.08,
+      "detail": "10.08 ms <= 800"
+    },
+    {
+      "control": {
+        "id": "flow_dataset_home__total",
+        "name": "UI flow \u2014 Open a dataset (home + query builder): 95th-pct completes under 1800 ms",
+        "category": "UI flow",
+        "kind": "ui_flow",
+        "ref": "flow_dataset_home",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 1800.0,
+        "unit": "ms",
+        "rationale": "p95 of the summed backing API calls (API-bound portion of the interaction)"
+      },
+      "pass": true,
+      "value": 248.16,
+      "detail": "248.16 ms <= 1800"
+    },
+    {
+      "control": {
+        "id": "flow_query_preview__total",
+        "name": "UI flow \u2014 Run a query preview: 95th-pct completes under 3000 ms",
+        "category": "UI flow",
+        "kind": "ui_flow",
+        "ref": "flow_query_preview",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 3000.0,
+        "unit": "ms",
+        "rationale": "p95 of the summed backing API calls (API-bound portion of the interaction)"
+      },
+      "pass": true,
+      "value": 25.92,
+      "detail": "25.92 ms <= 3000"
+    },
+    {
+      "control": {
+        "id": "flow_reports__total",
+        "name": "UI flow \u2014 Open the reports list: 95th-pct completes under 1500 ms",
+        "category": "UI flow",
+        "kind": "ui_flow",
+        "ref": "flow_reports",
+        "metric": "p95",
+        "comparator": "<=",
+        "threshold": 1500.0,
+        "unit": "ms",
+        "rationale": "p95 of the summed backing API calls (API-bound portion of the interaction)"
+      },
+      "pass": true,
+      "value": 142.69,
+      "detail": "142.69 ms <= 1500"
+    }
+  ]
+}

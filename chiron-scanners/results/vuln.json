@@ -1,0 +1,148 @@
+{
+  "tool": "vulnscan",
+  "generated": "2026-07-21T17:48:17+00:00",
+  "summary": {
+    "high": 3,
+    "medium": 6,
+    "low": 6
+  },
+  "n_findings": 15,
+  "meta": {},
+  "findings": [
+    {
+      "severity": "high",
+      "category": "secrets",
+      "title": "Hardcoded Django SECRET_KEY",
+      "location": "is4r-chiron-develop/test_project/project/settings.py:26",
+      "detail": "SECRET_KEY = \"1b_762p=(t97y-(y!@2pp5hzq*z)*va*e*akjuu_==#om4a8oe\"",
+      "fix": "Load SECRET_KEY from an environment variable / secrets manager, not a literal.",
+      "check": "secrets"
+    },
+    {
+      "severity": "high",
+      "category": "secrets",
+      "title": "Hardcoded Django SECRET_KEY",
+      "location": "is4r-chiron-develop/test_project/test_settings.py:14",
+      "detail": "SECRET_KEY = \"1b_762p=(t97y-(y!@2pp5hzq*z)*va*e*akjuu_==#om4a8oe\"",
+      "fix": "Load SECRET_KEY from an environment variable / secrets manager, not a literal.",
+      "check": "secrets"
+    },
+    {
+      "severity": "high",
+      "category": "xss",
+      "title": "Raw HTML injection via dangerouslySetInnerHTML",
+      "location": "is4r-chiron-ui-develop/src/routes/query.tsx:211",
+      "detail": "dangerouslySetInnerHTML={{",
+      "fix": "Sanitise HTML (e.g. DOMPurify) before rendering, or render as text.",
+      "check": "xss"
+    },
+    {
+      "severity": "medium",
+      "category": "config",
+      "title": "DEBUG = True",
+      "location": "is4r-chiron-develop/test_project/project/settings.py:29",
+      "detail": "DEBUG = True",
+      "fix": "Ensure DEBUG=False in any non-local settings; DEBUG leaks tracebacks + data.",
+      "check": "config"
+    },
+    {
+      "severity": "medium",
+      "category": "config",
+      "title": "Empty ALLOWED_HOSTS",
+      "location": "is4r-chiron-develop/test_project/project/settings.py:31",
+      "detail": "ALLOWED_HOSTS = []",
+      "fix": "Set ALLOWED_HOSTS explicitly for any deployed instance.",
+      "check": "config"
+    },
+    {
+      "severity": "medium",
+      "category": "config",
+      "title": "DEBUG = True",
+      "location": "is4r-chiron-develop/test_project/test_settings.py:17",
+      "detail": "DEBUG = True",
+      "fix": "Ensure DEBUG=False in any non-local settings; DEBUG leaks tracebacks + data.",
+      "check": "config"
+    },
+    {
+      "severity": "medium",
+      "category": "dependency",
+      "title": "django: version floor allows vulnerable releases",
+      "location": "is4r-chiron-develop/requirements/base.txt:1",
+      "detail": "django>=3.2.23,<6  (safe floor >= 4.2)",
+      "fix": "Raise the lower bound to >= 4.2. 3.2 is end-of-life; floor allows unpatched releases.",
+      "check": "dependency"
+    },
+    {
+      "severity": "medium",
+      "category": "headers",
+      "title": "nginx: no Strict-Transport-Security header",
+      "location": "is4r-chiron-ui-develop/nginx.conf",
+      "detail": "Strict-Transport-Security not configured in nginx.conf",
+      "fix": "Add `add_header Strict-Transport-Security ...;` to nginx.conf.",
+      "check": "headers"
+    },
+    {
+      "severity": "medium",
+      "category": "headers",
+      "title": "Live: response missing strict-transport-security header",
+      "location": "live: http://127.0.0.1:8000/api/version/",
+      "detail": "strict-transport-security not sent by the server",
+      "fix": "Send the strict-transport-security header (via middleware / nginx).",
+      "check": "live-headers"
+    },
+    {
+      "severity": "low",
+      "category": "dependency",
+      "title": "djangorestframework: version floor allows vulnerable releases",
+      "location": "is4r-chiron-develop/requirements/base.txt:2",
+      "detail": "djangorestframework>=3.12.4,<4  (safe floor >= 3.15.2)",
+      "fix": "Raise the lower bound to >= 3.15.2. older DRF browsable API had reflected-XSS CVEs.",
+      "check": "dependency"
+    },
+    {
+      "severity": "low",
+      "category": "dependency",
+      "title": "requests: version floor allows vulnerable releases",
+      "location": "is4r-chiron-develop/requirements/base.txt:6",
+      "detail": "requests>=2.26.0,<3  (safe floor >= 2.32.0)",
+      "fix": "Raise the lower bound to >= 2.32.0. older requests have credential-leak CVEs (e.g. CVE-2024-35195).",
+      "check": "dependency"
+    },
+    {
+      "severity": "low",
+      "category": "headers",
+      "title": "nginx: no X-Frame-Options header",
+      "location": "is4r-chiron-ui-develop/nginx.conf",
+      "detail": "X-Frame-Options not configured in nginx.conf",
+      "fix": "Add `add_header X-Frame-Options ...;` to nginx.conf.",
+      "check": "headers"
+    },
+    {
+      "severity": "low",
+      "category": "headers",
+      "title": "nginx: no X-Content-Type-Options header",
+      "location": "is4r-chiron-ui-develop/nginx.conf",
+      "detail": "X-Content-Type-Options not configured in nginx.conf",
+      "fix": "Add `add_header X-Content-Type-Options ...;` to nginx.conf.",
+      "check": "headers"
+    },
+    {
+      "severity": "low",
+      "category": "headers",
+      "title": "nginx: no Content-Security-Policy header",
+      "location": "is4r-chiron-ui-develop/nginx.conf",
+      "detail": "Content-Security-Policy not configured in nginx.conf",
+      "fix": "Add `add_header Content-Security-Policy ...;` to nginx.conf.",
+      "check": "headers"
+    },
+    {
+      "severity": "low",
+      "category": "headers",
+      "title": "Live: response missing content-security-policy header",
+      "location": "live: http://127.0.0.1:8000/api/version/",
+      "detail": "content-security-policy not sent by the server",
+      "fix": "Send the content-security-policy header (via middleware / nginx).",
+      "check": "live-headers"
+    }
+  ]
+}
