@@ -38,3 +38,4 @@ chiron-dashboard/data/logs/
 .idea/
 .vscode/
 *.swp
+deploy/chiron_metadata.sqlite3

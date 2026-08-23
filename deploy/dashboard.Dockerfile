@@ -11,6 +11,10 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
+# git: the Import tab can clone a data repo straight into the shared folder.
+RUN apt-get update && apt-get install -y --no-install-recommends git \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Tool sources + the dashboard itself. The root .dockerignore keeps the host
@@ -19,6 +23,7 @@ COPY chiron-validator/      /app/chiron-validator/
 COPY chiron-benchmark/      /app/chiron-benchmark/
 COPY chiron-scanners/       /app/chiron-scanners/
 COPY chiron-data-validator/ /app/chiron-data-validator/
+COPY rdcrn-catalog-checker/ /app/rdcrn-catalog-checker/
 
 # Recreate each tool's virtualenv at the SAME relative path the dashboard's
 # config.py already expects (<tool>/.venv; the data-validator uses venv/). Using
@@ -32,6 +37,17 @@ RUN set -eux; \
     done; \
     python -m venv /app/chiron-data-validator/venv; \
     /app/chiron-data-validator/venv/bin/pip install -r /app/chiron-data-validator/requirements.txt
+
+# The RDCRN checker drives a REAL browser against the live deployment (the login
+# page it exercises is JavaScript-built, and the SAML handoff runs through
+# auto-submitting forms — neither survives a plain HTTP client). Chromium plus its
+# system libraries is therefore a genuine runtime dependency, not a convenience.
+# Its own venv at <tool>/.venv keeps the layout config.py already expects.
+RUN set -eux; \
+    python -m venv /app/rdcrn-catalog-checker/.venv; \
+    /app/rdcrn-catalog-checker/.venv/bin/pip install \
+        -r /app/rdcrn-catalog-checker/requirements.txt; \
+    /app/rdcrn-catalog-checker/.venv/bin/playwright install --with-deps chromium
 
 # Dashboard code last, so editing the dashboard (e.g. static/) doesn't bust the
 # tool-install layer above. Then its runtime deps (flask, gunicorn) + the Docker

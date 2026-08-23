@@ -29,3 +29,12 @@ deploy/
 
 # Dashboard runtime logs (the dir itself is recreated in the Dockerfile).
 chiron-dashboard/data/logs/
+
+# The RDCRN SSO session is a LIVE CREDENTIAL — equivalent to a logged-in browser.
+# It is bind-mounted at runtime and must never be baked into an image layer, where
+# it would persist and travel with the image. Same for local env and scratch output.
+rdcrn-catalog-checker/.session/
+rdcrn-catalog-checker/results/
+rdcrn-catalog-checker/.env
+rdcrn-catalog-checker/cookies.txt
+rdcrn-catalog-checker/token.txt

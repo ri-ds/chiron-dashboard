@@ -1,1 +1,6 @@
 requests>=2.28,<3
+
+# For sso_session.py (login once, then silent re-SSO). checker.py needs only
+# requests; probe_sso.py is stdlib-only. After installing, fetch the browser engine:
+#     ./.venv/bin/playwright install chromium
+playwright>=1.40

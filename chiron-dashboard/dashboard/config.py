@@ -20,6 +20,10 @@ BENCHMARK = ROOT / "chiron-benchmark"
 SCANNERS = ROOT / "chiron-scanners"
 DATA_VALIDATOR = ROOT / "chiron-data-validator"   # pre-existing data-quality tool (unmodified)
 INTEGRATION = ROOT / "integration"
+# Checks a LIVE remote deployment rather than the local stack, so its tools never
+# point at CHIRON_BASE_URL. Which deployment is decided by the Login tab and stored
+# beside the session (sso_session.set_site); the directory name is historical.
+RDCRN = ROOT / "rdcrn-catalog-checker"
 
 DATA = Path(__file__).resolve().parent.parent / "data"
 LOG_DIR = DATA / "logs"
@@ -106,6 +110,7 @@ TOOLS = {
         "env": CHIRON_ENV,
         "result": "validator",
         "requires_chiron": True,
+        "selectable_dataset": True,
     },
     "benchmark": {
         "label": "Benchmark suite",
@@ -174,6 +179,71 @@ TOOLS = {
         "result": "dataquality",
         "requires_chiron": True,
         "success_exit_codes": [0, 1],
+        "selectable_dataset": True,
+        # Without this flag it scans every project; with it, just the one.
+        "dataset_flag": "--dataset",
+    },
+    # ---- The same two tools, against the SIGNED-IN LIVE site ----------------
+    # Which site that is comes from the Login tab, not from here (sso_session records
+    # it). These strings therefore must not name a specific deployment.
+    # They run unmodified. live_runner.py puts a session-injecting proxy in front
+    # so their normal auth path still works behind Shibboleth (see that script).
+    # requires_chiron is False: the target is remote, so the local stack being
+    # down is irrelevant.
+    "dataquality_live": {
+        "label": "Data quality · live",
+        "detail": "Data-quality checks against the signed-in live site",
+        "info": "The same data-quality tool, run unmodified against whichever site "
+                "you signed into on the Login tab. It reads concept statistics and "
+                "flags missingness, category typos, outliers and odd cardinality. "
+                "Sign in first; without a session it stops and says so. The dataset "
+                "comes from the picker — the run names it in its output, so check "
+                "that it is the one you meant.",
+        "kind": "subprocess",
+        "cwd": str(RDCRN),
+        "cmd": [str(RDCRN / ".venv" / "bin" / "python"), "live_runner.py",
+                "--tool", "dataquality"],
+        "result": "dataquality_live",
+        # The live site's own dataset list drives this (see /api/live/datasets), so a
+        # live run can be aimed at one dataset instead of whatever the API happens to
+        # return first.
+        "selectable_dataset": True,
+        "dataset_flag": "--dataset",
+        "requires_chiron": False,
+        # Needs a live session from the Login tab; without one the run can only
+        # fail, so the launcher refuses it up front instead of burning a job.
+        "requires_session": True,
+        # 1 = issues found, 2 = no session. Both are results, not crashes.
+        "success_exit_codes": [0, 1, 2],
+    },
+    "validator_live": {
+        "label": "Validator · live",
+        "detail": "API shape checks against the signed-in live site",
+        "info": "The API validator run against whichever site you signed into on the "
+                "Login tab. v1 endpoints are skipped deliberately: they need a Django "
+                "session login that does not exist behind Shibboleth.\n\n"
+                "Some endpoints may be refused. Do NOT read that as proof your account "
+                "lacks access: a refusal looks identical whether it is a permission "
+                "limit (an aggregate-level account genuinely cannot see subject-level "
+                "data), a real defect, or a misconfigured run — the wrong target "
+                "site, a dataset that does not exist there, or a timeout too short for "
+                "the endpoint all surface as refusals too. Check the target and dataset "
+                "the run reports before drawing any conclusion from a refusal.",
+        "kind": "subprocess",
+        "cwd": str(RDCRN),
+        "cmd": [str(RDCRN / ".venv" / "bin" / "python"), "live_runner.py",
+                "--tool", "validator"],
+        "result": "validator_live",
+        # The live site's own dataset list drives this (see /api/live/datasets), so a
+        # live run can be aimed at one dataset instead of whatever the API happens to
+        # return first.
+        "selectable_dataset": True,
+        "dataset_flag": "--dataset",
+        "requires_chiron": False,
+        # Needs a live session from the Login tab; without one the run can only
+        # fail, so the launcher refuses it up front instead of burning a job.
+        "requires_session": True,
+        "success_exit_codes": [0, 1, 2],
     },
 }
 

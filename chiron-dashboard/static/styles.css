@@ -81,22 +81,24 @@ main { max-width: 1160px; margin: 0 auto; padding: 28px; }
 .panel { display: none; }
 .panel.active { display: block; }
 
-/* ---------- big status hero ---------- */
-.hero {
-  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
-  margin-bottom: 22px;
+/* ---------- control strip ----------
+   The tab you are on already names the panel, so there is no heading here: it
+   would just repeat the tab. Actions sit left, status sits right, and the "i"
+   holds the longer explanation for anyone who wants it. */
+.toolbar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 20px;
 }
-.hero .title-wrap { flex: 1; min-width: 240px; }
-.hero h2 { margin: 0; font-size: 23px; letter-spacing: -.01em; display: flex; align-items: center; gap: 10px; }
-.hero .desc { margin: 4px 0 0; color: var(--ink-2); font-size: 15px; }
+.toolbar .spacer { flex: 1; min-width: 12px; }
+.toolbar .muted { font-size: 15px; }
 
 .status-hero {
-  display: inline-flex; align-items: center; gap: 11px; white-space: nowrap;
-  font-size: 17px; font-weight: 700; padding: 12px 22px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+  font-size: 15px; font-weight: 700; padding: 9px 18px; border-radius: 999px;
   border: 2px solid var(--idle-bd); background: var(--idle-bg); color: var(--idle);
   letter-spacing: .01em;
 }
-.status-hero .dot { width: 12px; height: 12px; border-radius: 50%; background: currentColor; }
+.status-hero .dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
 .status-hero.good { color: var(--good); background: var(--good-bg); border-color: var(--good-bd); }
 .status-hero.bad  { color: var(--bad);  background: var(--bad-bg);  border-color: var(--bad-bd); }
 .status-hero.warn { color: var(--warn); background: var(--warn-bg); border-color: var(--warn-bd); }
@@ -122,7 +124,7 @@ main { max-width: 1160px; margin: 0 auto; padding: 28px; }
 }
 .info-btn:hover { color: var(--accent); border-color: var(--accent); }
 .info-pop {
-  display: none; margin: -6px 0 18px; font-size: 15px; color: var(--ink);
+  display: none; margin: -8px 0 20px; font-size: 15px; color: var(--ink);
   background: var(--accent-weak); border: 1px solid var(--accent-border);
   border-radius: 10px; padding: 13px 16px; max-width: 760px;
 }
@@ -212,8 +214,8 @@ td.mono, .mono { font-family: var(--mono); font-size: 13px; color: var(--ink-2);
 
 .sev { font-size: 12.5px; font-weight: 700; padding: 3px 10px; border-radius: 999px; text-transform: uppercase; white-space: nowrap; }
 .sev.critical, .sev.high, .sev.fail { background: var(--bad-bg); color: var(--bad); }
-.sev.medium, .sev.unreached { background: var(--warn-bg); color: var(--warn); }
-.sev.low, .sev.info, .sev.na { background: var(--idle-bg); color: var(--idle); }
+.sev.medium, .sev.unreached, .sev.warn { background: var(--warn-bg); color: var(--warn); }
+.sev.low, .sev.info, .sev.na, .sev.refused { background: var(--idle-bg); color: var(--idle); }
 .sev.pass { background: var(--good-bg); color: var(--good); }
 
 .section-label { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); font-weight: 700; margin: 22px 2px 10px; }
@@ -251,3 +253,243 @@ td.mono, .mono { font-family: var(--mono); font-size: 13px; color: var(--ink-2);
   .status-hero { font-size: 15px; padding: 10px 16px; }
   .card-actions { gap: 8px; }
 }
+
+/* ---------- Login tab ----------
+   Uses the dashboard's own tokens so it sits in the same visual world as every
+   other panel. Scoped under .loginwrap so these class names cannot collide. */
+.loginwrap { padding: 2px 0 32px; }
+.loginwrap .lg-card {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 20px 24px 22px;
+}
+
+/* Mode switch */
+.loginwrap .lg-modes { display: flex; gap: 4px; margin-bottom: 18px; }
+.loginwrap .lg-mode {
+  font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer;
+  border: 1px solid var(--border); background: #fff; color: var(--ink-2);
+  padding: 7px 14px; border-radius: 8px;
+}
+.loginwrap .lg-mode:hover { color: var(--ink); background: var(--panel-2); }
+.loginwrap .lg-mode.active {
+  background: var(--accent-weak); border-color: var(--accent-border); color: var(--accent);
+}
+
+/* Two columns: the form, and the guidance that explains it. This is what the
+   card's width is for; a short form alone left most of it empty. */
+.loginwrap .lg-grid {
+  display: grid; gap: 30px 44px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  align-items: start;
+}
+.loginwrap .lg-left { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.loginwrap .lg-right { min-width: 0; }
+
+/* Shared site row: one field for both modes, plus a way to go get the cookie. */
+.loginwrap .lg-siterow { display: flex; align-items: flex-end; gap: 10px; }
+.loginwrap .lg-siterow .lg-site { flex: 1; min-width: 0; }
+.loginwrap .lg-open {
+  flex: none; font-size: 13.5px; font-weight: 600; text-decoration: none;
+  color: var(--accent); border: 1px solid var(--border-strong); background: #fff;
+  border-radius: 9px; padding: 10px 14px; white-space: nowrap;
+}
+.loginwrap .lg-open:hover { background: var(--accent-weak); border-color: var(--accent-border); }
+
+.loginwrap .lg-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.loginwrap .lg-label { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.loginwrap .lg-input {
+  width: 100%; box-sizing: border-box;
+  background: #fff; border: 1px solid var(--border-strong); border-radius: 9px;
+  padding: 10px 12px; font: inherit; font-size: 14.5px; color: var(--ink);
+  transition: border-color .12s, box-shadow .12s;
+}
+.loginwrap .lg-input::placeholder { color: var(--ink-3); }
+.loginwrap .lg-input:focus {
+  outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-weak);
+}
+.loginwrap .lg-textarea {
+  font-family: var(--mono); font-size: 12.5px; line-height: 1.5;
+  resize: vertical; min-height: 7rem;
+}
+.loginwrap .lg-textarea::placeholder { font-size: 12px; color: var(--ink-3); }
+
+.loginwrap .lg-btn {
+  align-self: flex-start;
+  background: var(--accent); border: 1px solid var(--accent); color: #fff;
+  border-radius: 9px; padding: 10px 26px; white-space: nowrap;
+  font: inherit; font-size: 14.5px; font-weight: 600; cursor: pointer;
+  transition: background .12s;
+}
+.loginwrap .lg-btn:hover:not(:disabled) { background: #4338ca; }
+.loginwrap .lg-btn:disabled { opacity: .6; cursor: default; }
+.loginwrap .lg-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.loginwrap .lg-pwform { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.loginwrap .lg-pwform .lg-btn { grid-column: 1 / -1; }
+.loginwrap .lg-cookieform { display: flex; flex-direction: column; gap: 14px; }
+
+/* Right column: guidance, always visible so nothing expands or shifts. */
+.loginwrap .lg-guide {
+  background: var(--panel-2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px 20px;
+}
+.loginwrap .lg-guidetitle {
+  margin: 0 0 14px; font-size: 14px; font-weight: 650; color: var(--ink);
+}
+.loginwrap .lg-steps-help { list-style: none; margin: 0; padding: 0; counter-reset: s;
+  font-size: 13.5px; color: var(--ink-2); }
+.loginwrap .lg-steps-help li { counter-increment: s; position: relative; padding: 0 0 14px 32px; }
+.loginwrap .lg-steps-help li:last-child { padding-bottom: 0; }
+.loginwrap .lg-steps-help li::before {
+  content: counter(s);
+  position: absolute; left: 0; top: 0;
+  width: 21px; height: 21px; border-radius: 50%;
+  background: var(--accent-weak); color: var(--accent);
+  border: 1px solid var(--accent-border);
+  font-size: 11.5px; font-weight: 700; line-height: 19px; text-align: center;
+}
+.loginwrap .lg-steps-help li:not(:last-child)::after {
+  content: ""; position: absolute; left: 10px; top: 25px; bottom: 4px;
+  width: 1px; background: var(--border);
+}
+.loginwrap .lg-stepname { display: block; font-weight: 650; color: var(--ink);
+  font-size: 13.5px; margin-bottom: 1px; }
+.loginwrap .lg-stepdetail { display: block; line-height: 1.55; }
+
+.loginwrap .lg-kbd {
+  font-family: var(--mono); font-size: 11.5px; color: var(--ink);
+  background: #fff; border: 1px solid var(--border-strong);
+  border-bottom-width: 2px; border-radius: 5px; padding: 1px 5px; white-space: nowrap;
+}
+.loginwrap .lg-code {
+  font-family: var(--mono); font-size: 12px; color: var(--ink);
+  background: var(--accent-weak); border-radius: 4px; padding: 1px 5px;
+  overflow-wrap: anywhere;
+}
+.loginwrap .lg-warn, .loginwrap .lg-tip {
+  margin-top: 14px; padding: 10px 12px; border-radius: 8px; line-height: 1.55;
+  font-size: 13px; border: 1px solid var(--border);
+}
+.loginwrap .lg-warn { background: var(--warn-bg); border-color: var(--warn-bd); color: #7c4a03; }
+.loginwrap .lg-warn .lg-code { background: #fff7e6; }
+.loginwrap .lg-tip { background: #fff; color: var(--ink-2); }
+
+.loginwrap .lg-msg { margin: 0; font-size: 14px; color: var(--ink-2); }
+.loginwrap .lg-msg:empty { display: none; }
+.loginwrap .lg-msg.err { color: var(--bad); }
+.loginwrap .lg-msg.ok { color: var(--good); }
+
+/* Stepper (password flow only) */
+.loginwrap .lg-progress { margin-top: 4px; border-top: 1px solid var(--border); padding-top: 14px; }
+.loginwrap .lg-steps { list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
+.loginwrap .lg-step { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--ink-3); }
+.loginwrap .lg-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); }
+.loginwrap .lg-step.done { color: var(--ink-2); }
+.loginwrap .lg-step.done .lg-dot { background: var(--good); }
+.loginwrap .lg-step.active { color: var(--ink); font-weight: 600; }
+.loginwrap .lg-step.active .lg-dot {
+  background: var(--accent); box-shadow: 0 0 0 4px var(--accent-weak);
+  animation: blink 1.4s infinite;
+}
+.loginwrap .lg-step.failed { color: var(--bad); font-weight: 600; }
+.loginwrap .lg-step.failed .lg-dot { background: var(--bad); }
+@media (prefers-reduced-motion: reduce) { .loginwrap .lg-step.active .lg-dot { animation: none; } }
+
+/* Saved session — counts only; cookie values never reach the page. */
+.loginwrap .lg-session {
+  margin-top: 16px; border-top: 1px solid var(--border); padding-top: 14px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.loginwrap .lg-sesstop { display: flex; align-items: center; gap: 10px; }
+.loginwrap .lg-pill {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px;
+  background: var(--good-bg); color: var(--good); border: 1px solid var(--good-bd);
+}
+.loginwrap .lg-who { font-size: 14px; color: var(--ink); font-weight: 600; }
+.loginwrap .lg-sessmeta { font-size: 13px; color: var(--ink-3); }
+.loginwrap .lg-linkbtn {
+  margin-left: auto; background: none; border: 0; padding: 0;
+  color: var(--ink-2); font: inherit; font-size: 13px;
+  text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+}
+.loginwrap .lg-linkbtn:hover { color: var(--ink); }
+
+@media (max-width: 900px) {
+  .loginwrap .lg-grid { grid-template-columns: 1fr; }
+  .loginwrap .lg-pwform { grid-template-columns: 1fr; }
+  .loginwrap .lg-siterow { flex-direction: column; align-items: stretch; }
+  .loginwrap .lg-linkbtn { margin-left: 0; }
+}
+
+/* Expandable rows (data quality: rules and issues).
+   A finding you cannot interrogate is just an assertion, so each row opens onto
+   the rule that produced it, or the evidence the check actually recorded. */
+.expandlist { display: flex; flex-direction: column; border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden; background: var(--panel); }
+.expandrow + .expandrow { border-top: 1px solid var(--border); }
+.expandhead {
+  width: 100%; display: flex; align-items: center; gap: 10px; text-align: left;
+  font: inherit; font-size: 14.5px; cursor: pointer; background: none; border: 0;
+  padding: 11px 14px; color: var(--ink);
+}
+.expandhead:hover { background: var(--panel-2); }
+.expandhead:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.chevmark { color: var(--ink-3); flex: none; width: 12px; font-size: 12px; }
+.expandtitle { font-weight: 600; flex: none; }
+.expandmsg { color: var(--ink-2); font-size: 13.5px; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.expandcount { margin-left: auto; font-variant-numeric: tabular-nums;
+  color: var(--ink-2); font-weight: 600; }
+.expandbody { display: none; padding: 4px 14px 16px 36px; background: var(--panel-2);
+  border-top: 1px solid var(--border); }
+.expandrow.open .expandbody { display: block; }
+.expanddesc { margin: 10px 0; font-size: 14px; color: var(--ink); max-width: 78ch; line-height: 1.55; }
+.kv { display: flex; gap: 10px; font-size: 13.5px; padding: 3px 0; }
+.kv .k { color: var(--ink-3); min-width: 8.5rem; flex: none; }
+.section-label.sub { font-size: 12.5px; margin-top: 14px; }
+
+
+/* Import tab: a workflow, so each step gets its own card. */
+.imp-card { background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 18px 20px; margin-bottom: 18px; }
+.imp-title { font-size: 15px; font-weight: 650; margin-bottom: 14px; }
+.imp-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 10px; }
+.imp-row:last-child { margin-bottom: 0; }
+.imp-label { font-size: 14px; font-weight: 600; color: var(--ink-2);
+  min-width: 5.5rem; }
+.imp-input { font: inherit; font-size: 14.5px; padding: 9px 11px;
+  border: 1px solid var(--border-strong); border-radius: 9px; background: #fff;
+  color: var(--ink); min-width: 14rem; }
+.imp-input.wide { flex: 1; min-width: 20rem; }
+.imp-input:focus, .imp-select:focus { outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-weak); }
+.imp-select { font: inherit; font-size: 14.5px; padding: 9px 11px;
+  border: 1px solid var(--border-strong); border-radius: 9px; background: #fff;
+  color: var(--ink); min-width: 22rem; }
+.imp-plan { margin-top: 14px; border-top: 1px solid var(--border);
+  padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+.imp-head { font-size: 15px; font-weight: 650; margin-bottom: 4px; }
+.imp-line { display: flex; align-items: center; gap: 10px; font-size: 13.5px;
+  color: var(--ink-2); flex-wrap: wrap; }
+.imp-detail { color: var(--ink-3); }
+.imp-note { font-size: 13px; color: var(--ink-3); }
+.imp-err { font-size: 14px; color: var(--bad); }
+.imp-projects { display: flex; flex-direction: column; }
+.imp-projrow { display: flex; align-items: center; gap: 12px; padding: 10px 0;
+  border-top: 1px solid var(--border); font-size: 14px; }
+.imp-projrow:first-child { border-top: none; }
+.imp-projrow .strong { font-weight: 600; min-width: 12rem; }
+.imp-del { margin-left: auto; }
+.imp-builtin { margin-left: auto; font-size: 12.5px; color: var(--ink-3); }
+.ds-select { min-width: 13rem; font-size: 14px; padding: 8px 10px; }
+
+/* Login tab: the datasets the saved session can reach. */
+.lg-sessds { margin-top: .5rem; font-size: .85rem; line-height: 1.5; }
+.lg-dshead { font-weight: 600; margin-bottom: .15rem; }
+.lg-ds { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.lg-dsnote { margin-top: .3rem; opacity: .7; }

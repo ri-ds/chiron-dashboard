@@ -49,9 +49,19 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
+      # Synthetic patient data, mounted where Chiron's ETL can open it directly.
+      # No copying: a Source just points at a path under here.
+      - ../chiron-imports:/app/test_project/source_data_import:ro
+      # The import driver the dashboard runs via `manage.py shell`.
+      - ./deploy/chiron_import.py:/app/chiron_import.py:ro
+      - ./deploy/chiron_build_synthea.py:/app/chiron_build_synthea.py:ro
       # Chiron's own repo gitignores settings_custom.py, so the container DB/host
       # wiring is shipped here and mounted in. Without this a fresh clone falls back
       # to localhost:5432 *inside* the container and every warehouse query 500s.
+      # Chiron's metadata database: datasets, collections, sources, concepts.
+      # It lives in the image, so without this every project created through the
+      # dashboard disappears the next time the container is recreated.
+      - ./deploy/chiron_metadata.sqlite3:/app/test_project/db.sqlite3
       - ./deploy/settings_custom.docker.py:/app/test_project/project/settings_custom.py:ro
     depends_on:
       db:
@@ -103,6 +113,15 @@ services:
       - ./is4r-chiron-ui-develop:/app/is4r-chiron-ui-develop:ro
       # Persist dashboard results/logs across restarts.
       - chiron-dashboard-data:/app/chiron-dashboard/data
+      # The RDCRN SSO session, shared with the host. Mounted rather than baked in
+      # so it is never committed to an image, and so renewing it on the host
+      # (sso_session.py cli-login) immediately fixes the container too.
+      - ./rdcrn-catalog-checker/.session:/app/rdcrn-catalog-checker/.session
+      # RDCRN check results, so they survive restarts and are readable on the host.
+      - ./rdcrn-catalog-checker/results:/app/rdcrn-catalog-checker/results
+      # Same synthetic data, so the dashboard can preview it before importing.
+      # Writable: the dashboard clones repos into here.
+      - ../chiron-imports:/app/chiron-imports
     depends_on:
       - api
       - ui

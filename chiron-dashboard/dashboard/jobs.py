@@ -83,10 +83,19 @@ class JobRunner:
     def is_busy(self, tool_key):
         return self._target(tool_key) in self.active
 
-    def run(self, tool_key, actor="dashboard") -> dict:
+    def run(self, tool_key, actor="dashboard", dataset=None) -> dict:
         spec = config.TOOLS.get(tool_key)
         if not spec:
             return {"ok": False, "message": "unknown tool"}
+        if dataset:
+            # Run against a chosen project instead of the compose-wide default.
+            # Two mechanisms, because the tools differ: the validator reads
+            # CHIRON_DATASET from the environment, the data-quality CLI takes a
+            # --dataset flag. Setting both is harmless and covers each.
+            spec = dict(spec)
+            spec["env"] = {**spec.get("env", {}), "CHIRON_DATASET": dataset}
+            if spec.get("dataset_flag"):
+                spec["cmd"] = list(spec["cmd"]) + [spec["dataset_flag"], dataset]
         target = self._target(tool_key)
         with self._lock:
             if target in self.active:

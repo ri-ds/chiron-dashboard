@@ -3,6 +3,14 @@
 cookies.txt
 token.txt
 
+# Saved SSO session — equivalent to your logged-in browser. Written 0600.
+.session/
+storage_state.json
+
+# Tool output
+monitor.log
+results/
+
 # Local env
 .venv/
 __pycache__/

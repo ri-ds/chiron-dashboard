@@ -28,6 +28,12 @@ def _now():
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
+# Exit codes that mean "something stopped this", not "this fell over".
+# `docker stop` sends SIGTERM (143) and SIGKILLs after the grace period (137);
+# treating those as crashes is what made a deliberate stop report "Crashed".
+_SIGNAL_EXITS = {0, 137, 143, 130}
+
+
 def _map_state(status: str, exit_code=None) -> str:
     """Docker container status -> the dashboard's vocabulary (matches ProcessManager)."""
     if status == "running":
@@ -35,8 +41,7 @@ def _map_state(status: str, exit_code=None) -> str:
     if status == "restarting":
         return "starting"
     if status in ("exited", "dead"):
-        # a non-zero exit means it fell over; a clean exit is just "stopped"
-        return "crashed" if exit_code not in (0, None) else "stopped"
+        return "stopped" if exit_code in _SIGNAL_EXITS or exit_code is None else "crashed"
     # created | paused | removing | (missing) all read as stopped
     return "stopped"
 
@@ -60,6 +65,10 @@ class DockerComponent:
         self.container_name = spec["container"]
         self._client_getter = client_getter
         self.started_by = None
+        # What this component is in the middle of, so the UI can say "Stopping…"
+        # instead of appearing to freeze and then jump straight to stopped.
+        self.transition = None          # None | "stopping" | "starting"
+        self.stopped_on_purpose = False
 
     def _container(self):
         client = self._client_getter()
@@ -78,6 +87,20 @@ class DockerComponent:
         if c is not None:
             st = (getattr(c, "attrs", {}) or {}).get("State", {}) or {}
             state = _map_state(c.status, st.get("ExitCode"))
+            # A transition in flight wins over the raw docker status: the container
+            # is still "running" for the seconds it takes SIGTERM to land.
+            if self.transition == "stopping":
+                state = "stopping" if state == "running" else "stopped"
+                if state == "stopped":
+                    self.transition = None
+            elif self.transition == "starting":
+                if state == "running":
+                    self.transition = None
+                else:
+                    state = "starting"
+            elif state == "crashed" and self.stopped_on_purpose:
+                # Stopped from here earlier; an odd exit code does not make it a crash.
+                state = "stopped"
             started = _parse_started(st.get("StartedAt", ""))
             if started and state in ("running", "starting"):
                 started_at = started.isoformat(timespec="seconds")
@@ -100,6 +123,8 @@ class DockerComponent:
         if c is None:
             return self._missing()
         try:
+            self.stopped_on_purpose = False
+            self.transition = "starting"
             c.start()
             self.started_by = actor
             return {"ok": True, "message": "starting", "state": "starting"}
@@ -110,23 +135,38 @@ class DockerComponent:
         c = self._container()
         if c is None:
             return self._missing()
-        try:
-            c.stop(timeout=15)
-            self.started_by = f"stopped by {actor}"
-            return {"ok": True, "message": "stopped", "state": "stopped"}
-        except Exception as exc:
-            return {"ok": False, "message": f"stop failed: {exc}", "state": "running"}
+        # Return immediately and do the stop in the background: c.stop() blocks for
+        # as long as the container takes to shut down, and holding the request open
+        # is precisely why the UI showed nothing until it had already stopped.
+        self.transition = "stopping"
+        self.stopped_on_purpose = True
+        self.started_by = f"stopped by {actor}"
+
+        def _worker():
+            try:
+                c.stop(timeout=15)
+            except Exception:
+                self.transition = None
+
+        threading.Thread(target=_worker, daemon=True).start()
+        return {"ok": True, "message": "stopping", "state": "stopping"}
 
     def restart(self, actor: str) -> dict:
         c = self._container()
         if c is None:
             return self._missing()
-        try:
-            c.restart(timeout=15)
-            self.started_by = actor
-            return {"ok": True, "message": "restarting", "state": "starting"}
-        except Exception as exc:
-            return {"ok": False, "message": f"restart failed: {exc}", "state": "crashed"}
+        self.transition = "starting"
+        self.stopped_on_purpose = False
+        self.started_by = actor
+
+        def _worker():
+            try:
+                c.restart(timeout=15)
+            except Exception:
+                self.transition = None
+
+        threading.Thread(target=_worker, daemon=True).start()
+        return {"ok": True, "message": "restarting", "state": "starting"}
 
     def tail(self, lines: int = 200) -> str:
         c = self._container()

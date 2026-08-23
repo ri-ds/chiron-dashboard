@@ -9,7 +9,7 @@ Auth is read from the environment (pick whichever you have):
   CATALOG_COOKIES_FILE  cookie file path (Mozilla/Netscape or LWP, e.g. cookies.txt)
   CATALOG_AUTH_HEADER   Authorization header value, e.g. "Bearer <token>"
 Config:
-  CATALOG_BASE_URL      default https://publicdatacatalog.rarediseasesnetwork.org
+  CATALOG_BASE_URL      overrides the site signed into on the dashboard Login tab
   CATALOG_DATASET       optional dataset slug to spot-check
 
 Exit codes: 0 authenticated & ran · 2 not authenticated · 3 reachable/unexpected · 1 other.
@@ -46,9 +46,13 @@ def _load_dotenv(path: str) -> None:
 
 _load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"))
 
-BASE = os.environ.get(
-    "CATALOG_BASE_URL", "https://publicdatacatalog.rarediseasesnetwork.org"
-).rstrip("/")
+import sso_session as _sso  # noqa: E402  (must follow .env load: it reads the env)
+
+# No deployment is baked in. The target is whichever site was signed into on the
+# dashboard's Login tab (sso_session records it beside the session), or an explicit
+# CATALOG_BASE_URL. Empty means "not configured yet", which callers must treat as a
+# stop rather than substituting a default host.
+BASE = _sso.load_site()
 DATASET = os.environ.get("CATALOG_DATASET", "").strip()
 UA = "Mozilla/5.0 (rdcrn-catalog-checker; read-only)"
 TIMEOUT = 20
